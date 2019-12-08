@@ -403,6 +403,12 @@ justify-content: space-evenly;
     padding:1em 2em;
     font-weight: bolder;
     letter-spacing: 4px;
+    transition:150ms ease-in-out;
+}
+.resumeSection a:hover{
+     background:#2a2a2a;
+    color:white;
+    box-shadow:0 0px 60px 6px rgb(148, 148, 148);
 }
 
 .contact{
