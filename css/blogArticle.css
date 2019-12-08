@@ -1,0 +1,169 @@
+body{
+    /* height:10000px; */
+}
+
+
+.blogContainer .img{
+    background-image: url('../img/blogBack.jpg');
+    width:100%;
+    height:100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    text-align: center;
+    color:white;
+    text-shadow:0 6px 10px #2a2a2a;
+}
+
+.blogContainer .paragraphs{
+    padding:1em;
+    width:100%;
+    /* margin-left:10%; */
+    text-align: justify;
+    font-size: 1.2em;
+    display:flex;
+    flex-direction: column;
+}
+.black{
+    background: #2a2a2a;
+    color: white;
+    padding: 2em;
+}
+.blogContainer .paragraphs::after{
+    content: '';
+    width:100%;
+    height: 0.3em;
+    background:#2a2a2a;
+    border-radius: 2em;
+}
+
+.blogContainer .likeBtn{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    color:#2a2a2a;
+}
+
+.likeBtn{
+    padding:1em 0;
+}
+.btn{
+    width:fit-content;
+    text-align: center;
+    padding:0.45em 0.52em;
+    border-radius: 50%;
+    color:white;
+    background: #2a2a2a;
+    transition: all 100ms ease-in-out;
+    position: relative;
+    z-index: 5;
+}
+.btn:hover{
+    background: #494949;
+    cursor: pointer;
+}
+.btn:focus{
+    outline:none;
+}
+i{
+    transition: transform 150ms ease-in-out;
+}
+
+.btnToggle{
+    color:#5871ff;
+    animation-name: likeAnimate;
+    animation-duration: 0.5s;
+    
+}
+.btnToggle:focus{
+    outline: none;
+}
+
+
+@keyframes likeAnimate{
+    0%{
+        transform: scale(1) rotate3d(0,0,0,0deg);
+    }
+    50%{
+        transform: scale(0.7) rotate3d(0,0,-1,30deg);
+    }
+    100%{
+        transform: scale(1) rotate3d(0,0,0,0deg);
+    }
+}
+
+
+
+.likeBtn .likeTxt{
+font-size: 0.45em;
+width:6em;
+padding:0.5em 2em;
+margin-left: -1.5em;
+position: relative;
+z-index: 4;
+border-radius: 5em;
+color:white;
+background: #2a2a2a;
+width:fit-content;
+}
+
+footer{
+    padding: 4em;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background:#2a2a2a;
+    color:white;
+}
+footer h1{
+    /* letter-spacing: 0.07em; */
+    font-size: 2.2em;
+    letter-spacing: 2px;
+}
+footer .socialIcons{
+    width:100%;
+    padding:1em 0;
+    display: flex;   
+    justify-content: center;
+    align-items: center;
+
+}
+
+footer .socialIcons i{
+    padding: 0.5em;
+    background: #6b6b6b;
+    color: white;
+    font-size: 1.3em;
+    margin:1em;
+    transition: background 50ms ease-in-out;
+}
+
+footer .socialIcons i:hover{
+    background:#6b6b6b2d;
+}
+
+
+@media screen and (min-width:800px){
+    .blogContainer .img{
+        font-size: 3em;
+    }
+    .blogContainer .paragraphs{
+        width:50%;
+        margin-left: 25%;
+    }
+    footer h1{
+        letter-spacing: 0.2em;
+        font-size: 3em;
+    }
+    .likeTxt{
+        font-size: 1.4em;
+    }
+}
