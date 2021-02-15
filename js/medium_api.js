@@ -9,7 +9,7 @@ function createBlogList(title, link) {
   const list = document.createElement("li");
 
   list.classList.add("points");
-  list.innerHTML = `<a href="${link}" target="blank">${title}</a>`;
+  list.innerHTML = `<a href="${link}" target="_blank">${title}</a>`;
   parent.appendChild(list);
 }
 

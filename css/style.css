@@ -1543,11 +1543,18 @@ img {
     overflow: hidden;
     display: block;
     position: relative;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    /* width: 337px; */
+    /* height: auto; */
+    /* object-fit: cover; */
 }
 
 .portfolio-item .portfolio_img img {
     width: 100%;
     height: auto;
+    object-fit: cover;
 }
 
 .portfolio-item:hover .item_overlay {
