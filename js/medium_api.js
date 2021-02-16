@@ -26,7 +26,6 @@ async function fetchData(API) {
   try {
     const response = await fetch(API);
     const data = await response.json();
-    console.log(data);
     parseData(data);
   } catch (e) {
     console.error(e);

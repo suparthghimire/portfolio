@@ -2765,3 +2765,51 @@ img.img.img-circle.lt-box {
     height: 480px !important;
     max-width: 100vw !important;
 }
+
+.submit_msg {
+    position: relative;
+    top: 0;
+    z-index: 100000 !important;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(106, 235, 106);
+    display: grid;
+    place-items: center;
+    color: white;
+    text-shadow: 0 6px 0 #2a2a2a23;
+    font-size: 2rem;
+    text-align: center;
+    transform: translateX(-100%) scale(0, 1);
+}
+
+.animate-success_enter {
+    animation: slide_msg_enter 1s ease-in-out forwards;
+    transform-origin: left;
+}
+
+.animate-success_exit {
+    animation: slide_msg_exit 1s ease-in-out forwards;
+    transform-origin: right;
+}
+
+@keyframes slide_msg_exit {
+    from {
+        transform: translateX(0%) scale(1, 1);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%) scale(0, 1);
+        opacity: 0;
+    }
+}
+
+@keyframes slide_msg_enter {
+    from {
+        transform: translateX(-100%) scale(0, 1);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0%) scale(1, 1);
+        opacity: 1;
+    }
+}
