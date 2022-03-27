@@ -1,4 +1,4 @@
-# Suparth Narayan Ghimires
+# Suparth Narayan Ghimire
 
 [suparthnarayanghimire2014@gmail.com](mailto:suparthnarayanghimire2014@gmail.com)
 <br>
