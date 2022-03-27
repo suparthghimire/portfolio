@@ -1,0 +1,278 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Suparth Narayan Ghimire - Suparth Narayan Ghimire</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="suparthghimire.html"><strong aria-hidden="true">1.</strong> Suparth Narayan Ghimire</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Suparth Narayan Ghimire</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="suparth-narayan-ghimires"><a class="header" href="#suparth-narayan-ghimires">Suparth Narayan Ghimires</a></h1>
+<p><a href="mailto:suparthnarayanghimire2014@gmail.com">suparthnarayanghimire2014@gmail.com</a>
+<br>
+977-9848952466 🇳🇵
+<br>
+Kathmandu, Nepal</p>
+<hr />
+<p><a href="https://github.com/suparthghimire">Github</a> | <a href="https://www.linkedin.com/in/suparth/">Linkedin</a></p>
+<hr />
+<h1 id="skills-and-abilities"><a class="header" href="#skills-and-abilities">Skills and Abilities</a></h1>
+<ul>
+<li>Excellent Proficiency in NodeJS and Express to create server side applications using <code>REST APIs</code> and <code>GraphQL</code></li>
+<li>Great knowledge of Client Side Libraries and Frameworks - <code>HTML/CSS</code>, <code>SCSS</code>, <code>Next.js</code>, <code>React</code></li>
+<li>Experiece in working with version control - <code>Git/GitHub</code></li>
+<li>Worked on Multiple Projects using databases such as <code>MySQL</code>, <code>ProstGreSQL</code>, <code>MongoDB</code></li>
+<li>Experience in <code>Web Sockets</code> using <code>SocketIO</code></li>
+<li>Currently Learning Technologies: <code>DevOps Practices</code>, <code>Go</code>, <code>Docker</code></li>
+</ul>
+<hr />
+<h1 id="work-experience"><a class="header" href="#work-experience">Work Experience</a></h1>
+<ul>
+<li>
+<p><strong>Design System in Next.js</strong>
+<br>
+<em>March 2021 - Current</em>
+<br>
+<strong>Aspark Systems</strong></p>
+<ul>
+<li>Created Design System for a Educational Platform using custom CSS designs and React Bootstrap.</li>
+<li>Integrated Existing REST API to design components.</li>
+<li>Worked on Agile Development Environment with Continuous Integration/Continuous Development.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>Next.js</code> Frontend Development</strong>
+<br>
+<em>December 2021 - February 2022</em>
+<br>
+<strong>Aspark Systems</strong></p>
+<ul>
+<li>Integrated Existing REST API with frontend design for company's long term client</li>
+<li>Worked on Agile Development Environment with Continuous Integration/Continuous Development.</li>
+<li>Created Multiple Resuable Components in the Application along with using preexisting templates.</li>
+</ul>
+</li>
+<li>
+<p><strong>Valley Public Scool RMS</strong>
+<br>
+<em>June 2020 - September 2020</em>
+<br>
+<strong>Freelance</strong></p>
+<ul>
+<li>Created Resumt Management System for Valley Public School</li>
+<li>Used Latest Design Patterns, <code>REST API</code>, <code>MySQL</code> database and pug templating engine to create entire full stack application</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h1 id="projects-and-community"><a class="header" href="#projects-and-community">Projects and Community</a></h1>
+<ul>
+<li>
+<p><strong>School Management System</strong>
+<br>
+<em>SMS for Any School</em></p>
+<ul>
+<li>Featrures to Manage Students, Teachers and Employees</li>
+<li>Features to Manage School Finances</li>
+<li>Features to Manage Student's Academic Performance (Result System)</li>
+<li>Integrates REST API with Frontend Application</li>
+<li><a href="https://github.com/suparthghimire/Chatur_Bhujeshwor_School_Backend">Github</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Talk</strong>
+<br>
+<em>End to End Encrypted Chat Application</em></p>
+<ul>
+<li>Chat Application that uses <strong>AES encryption</strong> and <strong>Diffie Hellman Key Exchange</strong> to let users Chat to each others securely</li>
+<li><a href="https://github.com/suparthghimire/talk-e2e-chat-backend">Backend Code</a> | <a href="https://github.com/suparthghimire/talk-e2e-chat-backend">Frontend Code</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Express CMD</strong>
+<br>
+<em>CLI Tool</em></p>
+<ul>
+<li>Generates <strong>Express Boilerplate Code</strong></li>
+<li>Generates Boilerplate Code for Initializing <strong>Server</strong>, <strong>Routes</strong> and <strong>Controllers</strong></li>
+<li><a href="https://github.com/suparthghimire/express-cmd">Github</a> | <a href="https://www.npmjs.com/package/express-cmd">npm</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Path Finding Visualizer</strong>
+<em>Visualization Tool</em></p>
+<ul>
+<li>Visualizes Popular Path Finding algorithms such as <strong>A-Star</strong> and <strong>Dijkstra</strong> in a Grid of Nodes</li>
+<li>Able to Navigate through Maze</li>
+<li><a href="https://github.com/suparthghimire/Path-Finding-Visualizer">Github</a> | <a href="https://suparth-a-star-visualizer.netlify.app/">Demo</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h1 id="blogs"><a class="header" href="#blogs">Blogs</a></h1>
+<ul>
+<li><a href="https://suparthnarayanghimire.com.np/use-local-storages-instead-of-databases-96ef48991c68">JavaScript Local Storages</a></li>
+<li><a href="https://suparthnarayanghimire.com.np/make-your-project-feel-the-night-5a00ff2270af?guid=none&amp;deviceId=fa76da31-73c2-447e-92b8-5cc72a1e816d">CSS Theme Switch</a></li>
+<li><a href="https://suparthnarayanghimire.com.np/skeleton-screens-in-plain-javascript-88bce254b0ab">Skeleton Screens Using Vanilla JavaScript</a></li>
+<li><a href="https://medium.com/@suparthnarayanghimire2014/simple-github-profile-page-display-app-using-github-api-and-flutter-using-bloc-pattern-62513f1cfbcb">Simple GitHub Profile Page Display APP using GitHub API and Flutter using BLoC Pattern</a></li>
+</ul>
+<hr />
+<h1 id="education"><a class="header" href="#education">Education</a></h1>
+<ul>
+<li><strong>Tribhuvan University</strong> - BscCSIT <em>2019 - Current</em></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
