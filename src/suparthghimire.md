@@ -70,6 +70,7 @@ Kathmandu, Nepal
   _End to End Encrypted Chat Application_
   - Chat Application that uses **AES encryption** and **Diffie Hellman Key Exchange** to let users Chat to each others securely
   - [Backend Code](https://github.com/suparthghimire/talk-e2e-chat-backend) | [Frontend Code](https://github.com/suparthghimire/talk-e2e-chat-backend)
+  - [Demo](https://talk-e2e-chat-frontend.vercel.app/)
 - **Express CMD**
   <br>
   _CLI Tool_
