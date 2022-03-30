@@ -12,7 +12,7 @@ Kathmandu, Nepal
 
 ---
 
-# Skills
+# Skills and Abilities
 
 - Excellent Proficiency in NodeJS and Express to create server side applications using `REST APIs` and `GraphQL`
 - Great knowledge of Client Side Libraries and Frameworks - `HTML/CSS`, `SCSS`, `Next.js`, `React`
