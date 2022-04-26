@@ -48,7 +48,7 @@ Kathmandu, Nepal
   _June 2020 - September 2020_
   <br>
   **Freelance**
-  - Created Resumt Management System for Valley Public School
+  - Created Result Management System for Valley Public School
   - Used Latest Design Patterns, `REST API`, `MySQL` database and pug templating engine to create entire full stack application
 
 ---

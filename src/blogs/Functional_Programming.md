@@ -9,7 +9,7 @@ However, JavaScript does provide some amazing features that you can leverage to 
 
 ## Example
 
-We all have used multiple built in methods in JavaScript, and have felt in love with it. Lets one some of them here:
+We all have used multiple built in methods in JavaScript, and have felt in love with it. Lets one of them here:
 
 ### 1. Classic Foreach
 
