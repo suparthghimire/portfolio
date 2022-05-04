@@ -1,6 +1,6 @@
 # What is This? (in JavaScript)
 
-We all developers have atleast once in our lifetime encountered the `this` keyword in most Programming Languages (`self` if you are from `Python` island). The implementation of `this` varies somewhat in all these languages, but it is not as confusing as it is in JavaScript.
+We all developers have atleast once in our lifetime encountered the `this` keyword in many Programming Languages (`self` if you are from `Python` island). The implementation of `this` varies somewhat in all these languages, but it is not as confusing as it is in JavaScript.
 
 # Detour to C++
 
