@@ -42,7 +42,7 @@ Doesn't Seem Complex does it? Well, buckle up, as we gear towards the island of 
 
 # Welcome to JavaScript
 
-`JavaScript`'s `this` has the same heart as other programming languages. It to refers too the current instance. But, the catch here is **WHAT IN HELL DOES CURRENT INSTANCE MEAN?**
+`JavaScript`'s `this` has the same heart as other programming languages. It too refers to the current instance. But, the catch here is **WHAT IN HELL DOES CURRENT INSTANCE MEAN?**
 
 ## Current Instance / Scope
 
@@ -68,7 +68,7 @@ _Some extra topics that you can learn that are based around Scopes in JavaScript
 The basic gist of `this` in JavaScript is that `this` refers to the object of whatever scope is wrapping it. If the object of scope is not found, it refers to the parent's scope's object.
 
 Confused? Let me elaborate.
-<br>
+
 We see that `window` is an object in JavaScript which is the object that represents the global scope. Block scope doesn't have any object that represents to it. Hence, if `this` is referred inside a simple block scope (within curly braces), it still refers to the window object as there is no other object for it to bind itself to.
 
 By {}, I mean simple lexical scoping or using if statements, loops etc.
@@ -109,7 +109,7 @@ console.log(obj.thisKey);
 
 All these examples will print the window object in console.
 
-Everything here has been explained by the paragraph above, except for last two examples of function and the object. The obvious question here is doesn't function have its own scope? And why does this not bind to Object?
+Everything here has been explained by the paragraph above, except for last two examples of function and the object. The obvious question here is doesn't function have its own scope? And why does `this` not bind to Object?
 
 **Function:**
 JavaScript functions are weird as well as magical. We can not only treat them as normal subroutines by simply calling them, but also as constructors by invoking them using the new keyword! Here, `function fn` has just been called like a normal subroutine. Thus, no constructor is created which does not create a function scope, but creates a local scope. And since no object corresponds to local scope, it looks at the parent scope of the function which is global scope. Since the corresponding object of global scope is window, `this` inside a function invoked by a simple function call refers to the global scope or window object.
@@ -145,8 +145,8 @@ const newInvoker = new ConstructorFunction();
 ```
 
 What is new Here?
-<br>
-We see that the first distinction from normal function call is we invoke the `ConstructorFunction` function using `new` Keyword. This now creates a function scope within the global scope. When a function scope is created, the corresponding object is Function itself (function is an Object in JavaScript - discussed above). Hence, the this keyword will now refrence the function itself.
+
+We see that the first distinction from normal function call is we invoke the `ConstructorFunction` function using `new` Keyword. This now creates a function scope within the global scope. When a function scope is created, the corresponding object is Function itself (function is an Object in JavaScript - discussed above). Hence, the `this` keyword will now refrence the function itself.
 
 A more sophisticated example
 
@@ -186,9 +186,11 @@ const arrFunction = () => {
 const arrFnNewInvoke = new arrFunction();
 ```
 
-This will result in an error that says `arrFunction is not a constructor`. Can you say why?
-<br>
-Arrow functions are not meant to be declared as constructors. Thus, they cannot be invoked using new keyword. Which means this keyword inside arrow functions will always point to the wrapper around the arrow function. In this case, it is the global scope/window object.
+This will result in an error that says `arrFunction is not a constructor`.
+
+Can you say why?
+
+Arrow functions are not meant to be declared as constructors. Thus, they cannot be invoked using new keyword. Which means `this` keyword inside arrow functions will always point to the wrapper around the arrow function. In this case, it is the global scope/window object.
 
 ---
 
@@ -204,9 +206,9 @@ let obj = {
 obj.getName();
 ```
 
-Remember while discussing the global scope of this keyword, we said that in normal function call, this points to global object as the wrapper of the function itself is the global context? Well here the wrapper is the object `obj`. What do you think will this point to in this case?
+Remember while discussing the global scope of `this` keyword, we said that in normal function call, `this` points to global object as the wrapper of the function itself is the global context? Well here the wrapper is the object `obj`. What do you think will `this` point to in this case?
 
-You might think that as `getName` function is wrapped by an object `obj`, this should point to global/window because Object doesnot create any scoping, which results in this pointing this to window itself.
+You might think that as `getName` function is wrapped by an object `obj`, `this` should point to global/window because Object doesnot create any scoping, which results in `this` pointing to window itself.
 
 The answer however is far more complex than that. Let's elaborate how objects are created in JavaScript.
 
@@ -237,7 +239,7 @@ let obj = {
 ```
 
 What will `this` point to in this case?
-<br>
+
 If you say window object, you are absolutely correct. As arrow functions cannot act as constructor function, it wont bind to the object `obj`, but to the global scope/window object.
 
 # Classes - New Kids on the Block
@@ -294,10 +296,10 @@ The Output will be
 "function"
 ```
 
-Thus, nothing changes while using this keyword inside classes in JavaScript.
+Thus, nothing changes while using `this` keyword inside classes in JavaScript.
 
 # Leaving JavaScript
 
-That is all I have in store for today. `this` isn't over by the way! `this` has alot more to be explored upon. Did you know, you could modify behavior of `this` in JavaScript? Well, stay tuned as a new blog, as more of `this` is yet to come come soon.
+That is all I have in store for today. `this` isn't over by the way! `this` has alot more to be explored upon. Did you know, you could modify behavior of `this` in JavaScript? Well, stay tuned for more blogs, as more of `this` is yet to be discussed.
 
 Adios

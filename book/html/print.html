@@ -281,7 +281,7 @@ int main(){
 Thus, while logging the value of <code>name</code> from object <code>p</code>, we get Suparth in terminal.</p>
 <p>Doesn't Seem Complex does it? Well, buckle up, as we gear towards the island of <code>JavaScript</code> where everything is weird. Specially <code>This</code>!</p>
 <h1 id="welcome-to-javascript"><a class="header" href="#welcome-to-javascript">Welcome to JavaScript</a></h1>
-<p><code>JavaScript</code>'s <code>this</code> has the same heart as other programming languages. It to refers too the current instance. But, the catch here is <strong>WHAT IN HELL DOES CURRENT INSTANCE MEAN?</strong></p>
+<p><code>JavaScript</code>'s <code>this</code> has the same heart as other programming languages. It too refers to the current instance. But, the catch here is <strong>WHAT IN HELL DOES CURRENT INSTANCE MEAN?</strong></p>
 <h2 id="current-instance--scope"><a class="header" href="#current-instance--scope">Current Instance / Scope</a></h2>
 <p>JavaScript (by default) is a globally scoped language. It means you dont need to create any extra scope to execute code like in C++ or Java where you require a <code>main</code> method. Here you can execute code from first line itself. It is similar to Python in this regard. To achieve this, JavaScript has scopes/contexts where everything is executed.</p>
 <p>Scopes in JavaScript:</p>
@@ -299,9 +299,8 @@ Thus, while logging the value of <code>name</code> from object <code>p</code>, w
 <h1 id="this-in-javascript"><a class="header" href="#this-in-javascript">This in JavaScript</a></h1>
 <p><code>this</code> refers to different things in JavaScript.</p>
 <p>The basic gist of <code>this</code> in JavaScript is that <code>this</code> refers to the object of whatever scope is wrapping it. If the object of scope is not found, it refers to the parent's scope's object.</p>
-<p>Confused? Let me elaborate.
-<br>
-We see that <code>window</code> is an object in JavaScript which is the object that represents the global scope. Block scope doesn't have any object that represents to it. Hence, if <code>this</code> is referred inside a simple block scope (within curly braces), it still refers to the window object as there is no other object for it to bind itself to.</p>
+<p>Confused? Let me elaborate.</p>
+<p>We see that <code>window</code> is an object in JavaScript which is the object that represents the global scope. Block scope doesn't have any object that represents to it. Hence, if <code>this</code> is referred inside a simple block scope (within curly braces), it still refers to the window object as there is no other object for it to bind itself to.</p>
 <p>By {}, I mean simple lexical scoping or using if statements, loops etc.</p>
 <h2 id="this-refering-to-global-object"><a class="header" href="#this-refering-to-global-object">This Refering to Global Object</a></h2>
 <ul>
@@ -333,7 +332,7 @@ fn();
 console.log(obj.thisKey);
 </code></pre>
 <p>All these examples will print the window object in console.</p>
-<p>Everything here has been explained by the paragraph above, except for last two examples of function and the object. The obvious question here is doesn't function have its own scope? And why does this not bind to Object?</p>
+<p>Everything here has been explained by the paragraph above, except for last two examples of function and the object. The obvious question here is doesn't function have its own scope? And why does <code>this</code> not bind to Object?</p>
 <p><strong>Function:</strong>
 JavaScript functions are weird as well as magical. We can not only treat them as normal subroutines by simply calling them, but also as constructors by invoking them using the new keyword! Here, <code>function fn</code> has just been called like a normal subroutine. Thus, no constructor is created which does not create a function scope, but creates a local scope. And since no object corresponds to local scope, it looks at the parent scope of the function which is global scope. Since the corresponding object of global scope is window, <code>this</code> inside a function invoked by a simple function call refers to the global scope or window object.</p>
 <p><strong>Object:</strong>
@@ -355,9 +354,8 @@ The answer to Object's example simple. Creating new object does not create any n
 }
 const newInvoker = new ConstructorFunction();
 </code></pre>
-<p>What is new Here?
-<br>
-We see that the first distinction from normal function call is we invoke the <code>ConstructorFunction</code> function using <code>new</code> Keyword. This now creates a function scope within the global scope. When a function scope is created, the corresponding object is Function itself (function is an Object in JavaScript - discussed above). Hence, the this keyword will now refrence the function itself.</p>
+<p>What is new Here?</p>
+<p>We see that the first distinction from normal function call is we invoke the <code>ConstructorFunction</code> function using <code>new</code> Keyword. This now creates a function scope within the global scope. When a function scope is created, the corresponding object is Function itself (function is an Object in JavaScript - discussed above). Hence, the <code>this</code> keyword will now refrence the function itself.</p>
 <p>A more sophisticated example</p>
 <pre><code class="language-js">function Game(initialScore) {
   this.score = initialScore;
@@ -387,9 +385,9 @@ console.log(newGame.score);
 };
 const arrFnNewInvoke = new arrFunction();
 </code></pre>
-<p>This will result in an error that says <code>arrFunction is not a constructor</code>. Can you say why?
-<br>
-Arrow functions are not meant to be declared as constructors. Thus, they cannot be invoked using new keyword. Which means this keyword inside arrow functions will always point to the wrapper around the arrow function. In this case, it is the global scope/window object.</p>
+<p>This will result in an error that says <code>arrFunction is not a constructor</code>.</p>
+<p>Can you say why?</p>
+<p>Arrow functions are not meant to be declared as constructors. Thus, they cannot be invoked using new keyword. Which means <code>this</code> keyword inside arrow functions will always point to the wrapper around the arrow function. In this case, it is the global scope/window object.</p>
 <hr />
 <ul>
 <li>Function as Method inside an Object</li>
@@ -402,8 +400,8 @@ Arrow functions are not meant to be declared as constructors. Thus, they cannot 
 }
 obj.getName();
 </code></pre>
-<p>Remember while discussing the global scope of this keyword, we said that in normal function call, this points to global object as the wrapper of the function itself is the global context? Well here the wrapper is the object <code>obj</code>. What do you think will this point to in this case?</p>
-<p>You might think that as <code>getName</code> function is wrapped by an object <code>obj</code>, this should point to global/window because Object doesnot create any scoping, which results in this pointing this to window itself.</p>
+<p>Remember while discussing the global scope of <code>this</code> keyword, we said that in normal function call, <code>this</code> points to global object as the wrapper of the function itself is the global context? Well here the wrapper is the object <code>obj</code>. What do you think will <code>this</code> point to in this case?</p>
+<p>You might think that as <code>getName</code> function is wrapped by an object <code>obj</code>, <code>this</code> should point to global/window because Object doesnot create any scoping, which results in <code>this</code> pointing to window itself.</p>
 <p>The answer however is far more complex than that. Let's elaborate how objects are created in JavaScript.</p>
 <pre><code class="language-js">let obj = new Object();
 obj.name = &quot;Suparth&quot;;
@@ -425,9 +423,8 @@ obj.getName();
     }
 }
 </code></pre>
-<p>What will <code>this</code> point to in this case?
-<br>
-If you say window object, you are absolutely correct. As arrow functions cannot act as constructor function, it wont bind to the object <code>obj</code>, but to the global scope/window object.</p>
+<p>What will <code>this</code> point to in this case?</p>
+<p>If you say window object, you are absolutely correct. As arrow functions cannot act as constructor function, it wont bind to the object <code>obj</code>, but to the global scope/window object.</p>
 <h1 id="classes---new-kids-on-the-block"><a class="header" href="#classes---new-kids-on-the-block">Classes - New Kids on the Block</a></h1>
 <p>Es6 was an interesting transition from Es5 in JavaScript island. Many new cool kids were added in the island who brought much needded changes that made the language much more redable and accessible. We all know the introduction of <code>Promises</code> and <code>async/await</code>, where <code>async/await</code> were the hot cakes. But well, classes were added too! So? How does <code>this</code> work in Classes? Well, how it always has! Let me explain.</p>
 <p>You see classes in JavaScript is same thing as creating functions and invoking them as constructors using the <code>new</code> keyword. It just is a syntatic sugar similar to <code>async/await</code>.
@@ -467,9 +464,9 @@ console.log(typeof DemoClass);
 <p>The Output will be</p>
 <pre><code>&quot;function&quot;
 </code></pre>
-<p>Thus, nothing changes while using this keyword inside classes in JavaScript.</p>
+<p>Thus, nothing changes while using <code>this</code> keyword inside classes in JavaScript.</p>
 <h1 id="leaving-javascript"><a class="header" href="#leaving-javascript">Leaving JavaScript</a></h1>
-<p>That is all I have in store for today. <code>this</code> isn't over by the way! <code>this</code> has alot more to be explored upon. Did you know, you could modify behavior of <code>this</code> in JavaScript? Well, stay tuned as a new blog, as more of <code>this</code> is yet to come come soon.</p>
+<p>That is all I have in store for today. <code>this</code> isn't over by the way! <code>this</code> has alot more to be explored upon. Did you know, you could modify behavior of <code>this</code> in JavaScript? Well, stay tuned for more blogs, as more of <code>this</code> is yet to be discussed.</p>
 <p>Adios</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="functional-programming-in-javascript-and-following-the-dry-principle"><a class="header" href="#functional-programming-in-javascript-and-following-the-dry-principle">Functional Programming in JavaScript and Following the DRY Principle</a></h1>
 <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
