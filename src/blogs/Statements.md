@@ -12,7 +12,7 @@ Why is this important? Why am I reading this blog? Why should I care about it wh
 
 `Statements` are fundamental building blocks that make or break a programming language. Knowing how something works does not mean you fully understand what it means. Many of us are not privy to the concept of how compilers work, and how the code we write gets compiled. The legend Linus Torvalds once said "`If you think like a computer, writing C makes sense`" and "`When I read C, I know what the assembly language will look like`"
 
-[_Here is the video where he says this_](https://www.youtube.com/watch?v=CYvJPra7Ebk)
+[_Here is the video where he says this_](https://youtu.be/MShbP3OpASA?t=1293)
 
 You can intrepret this in anyway you like, but what I understand is writing code in a language means you need to understand what it is going on underneath. Knowing how to do something to make it work isn't enough.
 
