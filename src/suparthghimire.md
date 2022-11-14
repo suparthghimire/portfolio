@@ -14,25 +14,38 @@ Kathmandu, Nepal
 
 # Skills and Abilities
 
-- Excellent Proficiency in NodeJS and Express to create server side applications using `REST APIs` and `GraphQL`
-- Great knowledge of Client Side Libraries and Frameworks - `HTML/CSS`, `SCSS`, `Next.js`, `React`
+- Excellent Proficiency in NodeJS and Express to create server side applications using `REST APIs`
+- Proficiency in TypeScript
+- Caching using `Redis`
+- Experience with Domain Management with `Cloudflare`
+- Great knowledge of Client Side Libraries and Frameworks - `HTML/CSS`, `SCSS`, `TailWindCSS`, `Mantine UI`, `Bootstrap`, `React`, `Next.js`,
 - Experiece in working with version control - `Git/GitHub`
 - Worked on Multiple Projects using databases such as `MySQL`, `ProstGreSQL`, `MongoDB`
 - Experience in `Web Sockets` using `SocketIO`
-- Currently Learning Technologies: `DevOps Practices`, `Go`, `Docker`
+- Currently Learning Technologies: `DevOps Practices`, `Docker`, `NGINX`
+- Have Understanding of `C++`
 
 ---
 
 # Work Experience
 
+- **Project Lead**
+  <br>
+  _July 2022 - July 2022_
+  <br>
+  **Freelance**
+  - Managing Team of 4 along with an International Client to create a Full Stack Application with Augmented Reality
+  - Implemented fully featured REST API in Microservice Architecture with CRUD, Authentication and Authorization in Node JS using TypeScript and MySQL with Prisma as ORM
+  - Created Robust Admin Panel to fulfill neads of current and future projects in Next JS using TypeScript with TailwindCSS and MantineUI
 - **Design System in Next.js**
   <br>
-  _March 2021 - Current_
+  _March 2022 - July 2022_
   <br>
   **Aspark Systems**
-  - Created Design System for a Educational Platform using custom CSS designs and React Bootstrap.
-  - Integrated Existing REST API to design components.
-  - Worked on Agile Development Environment with Continuous Integration/Continuous Development.
+  - Created Design System for a Educational Platform using custom CSS designs and React Bootstrap
+  - Integrated Existing REST API to design components
+  - Worked on Agile Development Environment with Continuous Integration/Continuous Development
+  - Delivered Sprint Goals with minimum backlogs
 - **`Next.js` Frontend Development**
   <br>
   _December 2021 - February 2022_
@@ -42,6 +55,7 @@ Kathmandu, Nepal
   - Integrated Existing REST API with frontend design for company's long term client
   - Worked on Agile Development Environment with Continuous Integration/Continuous Development.
   - Created Multiple Resuable Components in the Application along with using preexisting templates.
+  - Delivered Sprint Goals with minimum backlogs
 
 - **Valley Public Scool RMS**
   <br>
@@ -55,27 +69,27 @@ Kathmandu, Nepal
 
 # Projects and Community
 
-- **School Management System**
+- **Chess**
   <br>
-  _SMS for Any School_
+  _Game of Chess in Browser (On Going)_
 
-  - Featrures to Manage Students, Teachers and Employees
-  - Features to Manage School Finances
-  - Features to Manage Student's Academic Performance (Result System)
-  - Integrates REST API with Frontend Application
-  - [Github](https://github.com/suparthghimire/Chatur_Bhujeshwor_School_Backend)
+  - Chess Game with all rules of Traditional Chess
+  - Local Multiplayer
+  - Board Editing and Analysis
+  - [Github](https://github.com/suparthghimire/chess)
+  - [Demo](https://chess.suparthnarayanghimire.com.np)
 
 - **Talk**
   <br>
   _End to End Encrypted Chat Application_
   - Chat Application that uses **AES encryption** and **Diffie Hellman Key Exchange** to let users Chat to each others securely
   - [Backend Code](https://github.com/suparthghimire/talk-e2e-chat-backend) | [Frontend Code](https://github.com/suparthghimire/talk-e2e-chat-backend)
-  - [Demo](https://talk-e2e-chat-frontend.vercel.app/)
+  - [Demo](https://talk.suparthnarayanghimire.com.np/)
 - **Express CMD**
   <br>
   _CLI Tool_
   - Generates **Express Boilerplate Code**
-  - Generates Boilerplate Code for Initializing **Server**, **Routes** and **Controllers**
+  - Generates Boilerplate Code for Initializing **Server**, **Routes** and **Controllers** in Express JS Library
   - [Github](https://github.com/suparthghimire/express-cmd) | [npm](https://www.npmjs.com/package/express-cmd)
 - **Path Finding Visualizer**
   _Visualization Tool_
