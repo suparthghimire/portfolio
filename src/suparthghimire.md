@@ -46,10 +46,12 @@ Kathmandu, Nepal
   - Created Design System for a Educational Platform using custom CSS designs and React Bootstrap
   - Integrated Existing REST API to design components
     <br>
-    _December 2021 - February 2022_
-    <br>
-    **Aspark Systems**
 
+- **Front End Application in Next JS**
+  <br>
+  _December 2021 - February 2022_
+  <br>
+  **Aspark Systems**
   - Integrated Existing REST API with frontend design for company's long term client
   - Created Multiple Resuable Components in the Application along with using preexisting templates.
 
