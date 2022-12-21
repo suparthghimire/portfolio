@@ -15,55 +15,43 @@ Kathmandu, Nepal
 # Skills and Abilities
 
 - Excellent Proficiency in NodeJS and Express to create server side applications using `REST APIs`
-- Proficiency in TypeScript
+- Proficiency in `TypeScript`
 - Caching using `Redis`
 - Experience with Domain Management with `Cloudflare`
-- Great knowledge of Client Side Libraries and Frameworks - `HTML/CSS`, `SCSS`, `TailWindCSS`, `Mantine UI`, `Bootstrap`, `React`, `Next.js`,
+- Great knowledge of Client Side Libraries and Frameworks - `TailWindCSS`, `Mantine UI`, `Bootstrap`, `React`, `Next.js`,
 - Experiece in working with version control - `Git/GitHub`
-- Worked on Multiple Projects using databases such as `MySQL`, `ProstGreSQL`, `MongoDB`
+- Worked on Multiple Projects using databases such as `MySQL`, `ProstGreSQL`, `MongoDB`, `Firebase`
 - Experience in `Web Sockets` using `SocketIO`
-- Currently Learning Technologies: `DevOps Practices`, `Docker`, `NGINX`
-- Have Understanding of `C++`
+- Knowledge of Devops: `Docker`, `NGINX`, `Google Cloud`
+- Good Understanding of `C++`
 
 ---
 
 # Work Experience
 
-- **Project Lead**
+- **Project Lead - The Wadi Tribe Mobile Application**
   <br>
-  _July 2022 - July 2022_
+  _July 2022 - November 2022_
   <br>
   **Freelance**
   - Managing Team of 4 along with an International Client to create a Full Stack Application with Augmented Reality
-  - Implemented fully featured REST API in Microservice Architecture with CRUD, Authentication and Authorization in Node JS using TypeScript and MySQL with Prisma as ORM
+  - Implemented fully featured REST API in Microservice Architecture with CRUD, Authentication and Authorization in Node JS using TypeScript and MySQL with Prisma ORM
   - Created Robust Admin Panel to fulfill neads of current and future projects in Next JS using TypeScript with TailwindCSS and MantineUI
 - **Design System in Next.js**
   <br>
   _March 2022 - July 2022_
   <br>
   **Aspark Systems**
+
   - Created Design System for a Educational Platform using custom CSS designs and React Bootstrap
   - Integrated Existing REST API to design components
-  - Worked on Agile Development Environment with Continuous Integration/Continuous Development
-  - Delivered Sprint Goals with minimum backlogs
-- **`Next.js` Frontend Development**
-  <br>
-  _December 2021 - February 2022_
-  <br>
-  **Aspark Systems**
+    <br>
+    _December 2021 - February 2022_
+    <br>
+    **Aspark Systems**
 
   - Integrated Existing REST API with frontend design for company's long term client
-  - Worked on Agile Development Environment with Continuous Integration/Continuous Development.
   - Created Multiple Resuable Components in the Application along with using preexisting templates.
-  - Delivered Sprint Goals with minimum backlogs
-
-- **Valley Public Scool RMS**
-  <br>
-  _June 2020 - September 2020_
-  <br>
-  **Freelance**
-  - Created Result Management System for Valley Public School
-  - Used Latest Design Patterns, `REST API`, `MySQL` database and pug templating engine to create entire full stack application
 
 ---
 
@@ -73,7 +61,6 @@ Kathmandu, Nepal
   <br>
   _Game of Chess in Browser (On Going)_
 
-  - Chess Game with all rules of Traditional Chess
   - Local Multiplayer
   - Board Editing and Analysis
   - [Github](https://github.com/suparthghimire/chess)
@@ -83,29 +70,13 @@ Kathmandu, Nepal
   <br>
   _End to End Encrypted Chat Application_
   - Chat Application that uses **AES encryption** and **Diffie Hellman Key Exchange** to let users Chat to each others securely
-  - [Backend Code](https://github.com/suparthghimire/talk-e2e-chat-backend) | [Frontend Code](https://github.com/suparthghimire/talk-e2e-chat-backend)
+  - [GitHub](https://github.com/suparthghimire/talk-e2e-chat-backend)
   - [Demo](https://talk.suparthnarayanghimire.com.np/)
-- **Express CMD**
+- **ts-template**
   <br>
   _CLI Tool_
-  - Generates **Express Boilerplate Code**
-  - Generates Boilerplate Code for Initializing **Server**, **Routes** and **Controllers** in Express JS Library
-  - [Github](https://github.com/suparthghimire/express-cmd) | [npm](https://www.npmjs.com/package/express-cmd)
-- **Path Finding Visualizer**
-  _Visualization Tool_
-  - Visualizes Popular Path Finding algorithms such as **A-Star** and **Dijkstra** in a Grid of Nodes
-  - Able to Navigate through Maze
-  - [Github](https://github.com/suparthghimire/Path-Finding-Visualizer) | [Demo](https://suparth-a-star-visualizer.netlify.app/)
-
----
-
-# Blogs
-
-- [Functional Programming in JavaScript](./blogs/Functional_Programming.md)
-- [JavaScript Local Storages](https://suparthnarayanghimire.com.np/use-local-storages-instead-of-databases-96ef48991c68)
-- [CSS Theme Switch](https://suparthnarayanghimire.com.np/make-your-project-feel-the-night-5a00ff2270af?guid=none&deviceId=fa76da31-73c2-447e-92b8-5cc72a1e816d)
-- [Skeleton Screens Using Vanilla JavaScript](https://suparthnarayanghimire.com.np/skeleton-screens-in-plain-javascript-88bce254b0ab)
-- [Simple GitHub Profile Page Display APP using GitHub API and Flutter using BLoC Pattern](https://medium.com/@suparthnarayanghimire2014/simple-github-profile-page-display-app-using-github-api-and-flutter-using-bloc-pattern-62513f1cfbcb)
+  - Initializes TypeScript Project using SWC compiler
+  - [Github](https://github.com/suparthghimire/ts-template) | [npm](https://www.npmjs.com/package/@suparth_ghimire/ts-template)
 
 ---
 

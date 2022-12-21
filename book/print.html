@@ -39,31 +39,6 @@
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
-        <!-- Custom JS scripts for mdbook-pdf PDF generation -->
-        <script type='text/javascript'>
-            let markAllContentHasLoadedForPrinting = () =>
-                window.setTimeout(
-                    () => {{
-                        let p = document.createElement('div');
-                        p.setAttribute('id', 'content-has-all-loaded-for-mdbook-pdf-generation');
-                        document.body.appendChild(p);
-                    }}, 100
-                );
-
-            window.addEventListener('load', () => {{
-                // Expand all the <details> elements for printing.
-                r = document.getElementsByTagName('details');
-                for (let i of r)
-                    i.open = true;
-
-                try {{
-                    MathJax.Hub.Register.StartupHook('End', markAllContentHasLoadedForPrinting);
-                }} catch (e) {{
-                    markAllContentHasLoadedForPrinting();
-                }}
-            }});
-        </script>
-
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -182,9 +157,9 @@ Kathmandu, Nepal</p>
 <li>Proficiency in <code>TypeScript</code></li>
 <li>Caching using <code>Redis</code></li>
 <li>Experience with Domain Management with <code>Cloudflare</code></li>
-<li>Great knowledge of Client Side Libraries and Frameworks - <code>TailWindCSS</code>, <code>Mantine UI</code>, <code>Bootstrap</code>, <code>React</code>, <code>Next.js</code>,</li>
+<li>Great knowledge of Client Side Libraries and Frameworks - <code>HTML/CSS</code>, <code>SCSS</code>, <code>TailWindCSS</code>, <code>Mantine UI</code>, <code>Bootstrap</code>, <code>React</code>, <code>Next.js</code>,</li>
 <li>Experiece in working with version control - <code>Git/GitHub</code></li>
-<li>Worked on Multiple Projects using databases such as <code>MySQL</code>, <code>ProstGreSQL</code>, <code>MongoDB</code>, <code>Firebase</code></li>
+<li>Worked on Multiple Projects using databases such as <code>MySQL</code>, <code>ProstGreSQL</code>, <code>MongoDB</code></li>
 <li>Experience in <code>Web Sockets</code> using <code>SocketIO</code></li>
 <li>Knowledge of Devops: <code>Docker</code>, <code>NGINX</code>, <code>Google Cloud</code></li>
 <li>Good Understanding of <code>C++</code></li>
@@ -195,12 +170,12 @@ Kathmandu, Nepal</p>
 <li>
 <p><strong>Project Lead - The Wadi Tribe Mobile Application</strong>
 <br>
-<em>July 2022 - November 2022</em>
+<em>July 2022 - July 2022</em>
 <br>
 <strong>Freelance</strong></p>
 <ul>
 <li>Managing Team of 4 along with an International Client to create a Full Stack Application with Augmented Reality</li>
-<li>Implemented fully featured REST API in Microservice Architecture with CRUD, Authentication and Authorization in Node JS using TypeScript and MySQL with Prisma ORM</li>
+<li>Implemented fully featured REST API in Microservice Architecture with CRUD, Authentication and Authorization in Node JS using TypeScript and MySQL with Prisma as ORM</li>
 <li>Created Robust Admin Panel to fulfill neads of current and future projects in Next JS using TypeScript with TailwindCSS and MantineUI</li>
 </ul>
 </li>
@@ -211,22 +186,34 @@ Kathmandu, Nepal</p>
 <br>
 <strong>Aspark Systems</strong></p>
 <ul>
-<li>
-<p>Created Design System for a Educational Platform using custom CSS designs and React Bootstrap</p>
+<li>Created Design System for a Educational Platform using custom CSS designs and React Bootstrap</li>
+<li>Integrated Existing REST API to design components</li>
+<li>Worked on Agile Development Environment with Continuous Integration/Continuous Development</li>
+<li>Delivered Sprint Goals with minimum backlogs</li>
+</ul>
 </li>
 <li>
-<p>Integrated Existing REST API to design components
+<p><strong><code>Next.js</code> Frontend Development</strong>
 <br>
 <em>December 2021 - February 2022</em>
 <br>
 <strong>Aspark Systems</strong></p>
+<ul>
+<li>Integrated Existing REST API with frontend design for company's long term client</li>
+<li>Worked on Agile Development Environment with Continuous Integration/Continuous Development.</li>
+<li>Created Multiple Resuable Components in the Application along with using preexisting templates.</li>
+<li>Delivered Sprint Goals with minimum backlogs</li>
+</ul>
 </li>
 <li>
-<p>Integrated Existing REST API with frontend design for company's long term client</p>
-</li>
-<li>
-<p>Created Multiple Resuable Components in the Application along with using preexisting templates.</p>
-</li>
+<p><strong>Valley Public Scool RMS</strong>
+<br>
+<em>June 2020 - September 2020</em>
+<br>
+<strong>Freelance</strong></p>
+<ul>
+<li>Created Result Management System for Valley Public School</li>
+<li>Used Latest Design Patterns, <code>REST API</code>, <code>MySQL</code> database and pug templating engine to create entire full stack application</li>
 </ul>
 </li>
 </ul>
@@ -238,6 +225,7 @@ Kathmandu, Nepal</p>
 <br>
 <em>Game of Chess in Browser (On Going)</em></p>
 <ul>
+<li>Chess Game with all rules of Traditional Chess</li>
 <li>Local Multiplayer</li>
 <li>Board Editing and Analysis</li>
 <li><a href="https://github.com/suparthghimire/chess">Github</a></li>
@@ -250,19 +238,38 @@ Kathmandu, Nepal</p>
 <em>End to End Encrypted Chat Application</em></p>
 <ul>
 <li>Chat Application that uses <strong>AES encryption</strong> and <strong>Diffie Hellman Key Exchange</strong> to let users Chat to each others securely</li>
-<li><a href="https://github.com/suparthghimire/talk-e2e-chat-backend">GitHub</a></li>
+<li><a href="https://github.com/suparthghimire/talk-e2e-chat-backend">Backend Code</a> | <a href="https://github.com/suparthghimire/talk-e2e-chat-backend">Frontend Code</a></li>
 <li><a href="https://talk.suparthnarayanghimire.com.np/">Demo</a></li>
 </ul>
 </li>
 <li>
-<p><strong>ts-template</strong>
+<p><strong>Express CMD</strong>
 <br>
 <em>CLI Tool</em></p>
 <ul>
-<li>Initializes TypeScript Project using SWC compiler</li>
-<li><a href="https://github.com/suparthghimire/ts-template">Github</a> | <a href="https://www.npmjs.com/package/@suparth_ghimire/ts-template">npm</a></li>
+<li>Generates <strong>Express Boilerplate Code</strong></li>
+<li>Generates Boilerplate Code for Initializing <strong>Server</strong>, <strong>Routes</strong> and <strong>Controllers</strong> in Express JS Library</li>
+<li><a href="https://github.com/suparthghimire/express-cmd">Github</a> | <a href="https://www.npmjs.com/package/express-cmd">npm</a></li>
 </ul>
 </li>
+<li>
+<p><strong>Path Finding Visualizer</strong>
+<em>Visualization Tool</em></p>
+<ul>
+<li>Visualizes Popular Path Finding algorithms such as <strong>A-Star</strong> and <strong>Dijkstra</strong> in a Grid of Nodes</li>
+<li>Able to Navigate through Maze</li>
+<li><a href="https://github.com/suparthghimire/Path-Finding-Visualizer">Github</a> | <a href="https://suparth-a-star-visualizer.netlify.app/">Demo</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h1 id="blogs"><a class="header" href="#blogs">Blogs</a></h1>
+<ul>
+<li><a href="./blogs/Functional_Programming.html">Functional Programming in JavaScript</a></li>
+<li><a href="https://suparthnarayanghimire.com.np/use-local-storages-instead-of-databases-96ef48991c68">JavaScript Local Storages</a></li>
+<li><a href="https://suparthnarayanghimire.com.np/make-your-project-feel-the-night-5a00ff2270af?guid=none&amp;deviceId=fa76da31-73c2-447e-92b8-5cc72a1e816d">CSS Theme Switch</a></li>
+<li><a href="https://suparthnarayanghimire.com.np/skeleton-screens-in-plain-javascript-88bce254b0ab">Skeleton Screens Using Vanilla JavaScript</a></li>
+<li><a href="https://medium.com/@suparthnarayanghimire2014/simple-github-profile-page-display-app-using-github-api-and-flutter-using-bloc-pattern-62513f1cfbcb">Simple GitHub Profile Page Display APP using GitHub API and Flutter using BLoC Pattern</a></li>
 </ul>
 <hr />
 <h1 id="education"><a class="header" href="#education">Education</a></h1>
