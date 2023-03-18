@@ -1,0 +1,349 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dynamic Carousel - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="../../">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme -->
+        
+
+        
+
+        <!-- Fetch Clipboard.js from CDN but have a local fallback -->
+        <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.1/clipboard.min.js"></script>
+        <script>
+            if (typeof Clipboard == 'undefined') {
+                document.write(unescape("%3Cscript src='clipboard.min.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <!-- Fetch store.js from local - TODO add CDN when 2.x.x is available on cdnjs -->
+        <script src="store.js"></script>
+
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = store.get('mdbook-theme');
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = store.get('mdbook-sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="./suparthghimire.html"><strong>1.</strong> Suparth Narayan Ghimire</a></li><li><a href="./blogs/Statements.html"><strong>2.</strong> Understanding Statements</a></li><li><a href="./blogs/This.html"><strong>3.</strong> Weirdness of This</a></li><li><a href="./blogs/Functional_Programming.html"><strong>4.</strong> Weird usage of Functions</a></li><li><a href="./blogs/React/Carousel.html" class="active"><strong>5.</strong> Dynamic Carousel</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page" tabindex="-1">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars" title="Toggle sidebar"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush" title="Change theme"></i>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html">
+                            <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="./blogs/React/Carousel.html#use-clever-math-to-make-responsive-carousel" id="use-clever-math-to-make-responsive-carousel"><h1>Use Clever Math to Make Responsive Carousel</h1></a>
+<p>I have used a lot of carousel components in the past, and they work good, but none of them work as expected. They are very hard to customize for smaller screens and often require static values when you want to make them responsive. I have decided to make my own carousel component that is responsive (on any screen size) and easy to customize.</p>
+<a class="header" href="./blogs/React/Carousel.html#problem" id="problem"><h1>Problem</h1></a>
+<p>The problem that we have on hand by looking at some popular carousel components.</p>
+<ol>
+<li>React Slick
+Good Features, but requires custom hard coded values for responsive design.</li>
+<li>Mantine Carousel
+Good Features, but requires custom hard coded values for responsive design.</li>
+<li>React Responsive Carousel
+Good Features, but requires custom hard coded values for responsive design.</li>
+<li>React Multi Carousel
+Good Features, but requires custom hard coded values for responsive design.</li>
+<li>Swiper
+Good Features, but requires custom hard coded values for responsive design.
+Also, it says ReactComponent version will be deprecated in favor of web-components, which are not supported well in React yet.</li>
+</ol>
+<p>See a pattern here? All of these need hard coded values to make them responsive.</p>
+<p>All of these component packages, though they provide great deal of customization and features, require hard coded values to make them responsive.</p>
+<p>This is something we often see in these components</p>
+<pre><code class="language-ts">const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 5,
+    slidesToSlide: 5, // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 3,
+    slidesToSlide: 3, // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1, // optional, default to 1.
+  },
+};
+</code></pre>
+<p>What if I don't want to specify these values and want them to be dynamic? The major drawback of this is that the size of carousel in different screens dictates the size of inner carousel child components. This really hard to maintain.</p>
+<a class="header" href="./blogs/React/Carousel.html#objective" id="objective"><h1>Objective</h1></a>
+<p>I have one job, To make a carousel with <strong>NO HARD CODED VALUES</strong></p>
+<a class="header" href="./blogs/React/Carousel.html#solution" id="solution"><h1>Solution</h1></a>
+<p>I will be using the things that are popular at the time being to create the carousel and which probably will be used in many of your projects.</p>
+<ul>
+<li><a href="#">React</a></li>
+<li><a href="#">Typescript (optional)</a></li>
+<li><a href="#">Tailwindcss</a></li>
+<li><a href="#">Framer Motion</a></li>
+<li><a href="#">Use Measure</a> <em>Simple hook to get width and height of our elements</em></li>
+</ul>
+<a class="header" href="./blogs/React/Carousel.html#setup" id="setup"><h1>Setup</h1></a>
+<p>Install the dependencies and start your server. (Figure out how to do this yourself)</p>
+<a class="header" href="./blogs/React/Carousel.html#create-the-carousel" id="create-the-carousel"><h1>Create the Carousel</h1></a>
+<p>We will be using the <code>useMeasure</code> hook to get the width of our carousel. We will also be using the <code>useTransform</code> hook from <code>framer-motion</code> to make the carousel slide.</p>
+<p>I wont go block by block because I know the pain to compile code from blog posts. I will just show the final code and explain the parts later if you want to know how this works.</p>
+<p>Here is the code</p>
+<p><code>File: Card.ts</code>
+<em>Write your own mockdata and import it</em></p>
+<pre><code class="language-ts">import { ITEMS } from &quot;../utils/mockdata&quot;;
+
+export default function Card(props: {
+  item: typeof ITEMS[number];
+  active: boolean;
+}) {
+  return (
+    &lt;div
+      className={`border w-[300px] shadow rounded ${
+        props.active ? &quot;bg-red-200&quot; : &quot;&quot;
+      }`}
+    &gt;
+      &lt;img
+        src={props.item.img}
+        className=&quot;w-[300px] aspect-video object-cover&quot;
+      /&gt;
+      &lt;div className=&quot;p-4&quot;&gt;
+        &lt;h2 className=&quot;text-2xl font-bold&quot;&gt;{props.item.title}&lt;/h2&gt;
+        &lt;p className=&quot;text-gray-500&quot;&gt;{props.item.description}&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;w-full p-2&quot;&gt;
+        &lt;button className=&quot;bg-black rounded text-white p-2 w-full hover:bg-neutral-700 transition&quot;&gt;
+          View Info
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<p><code>File: Carousel.ts</code></p>
+<pre><code class="language-ts">import Card from &quot;./Card&quot;;
+import { ITEMS } from &quot;../utils/mockdata&quot;;
+import { motion, AnimatePresence } from &quot;framer-motion&quot;;
+import { useEffect, useState } from &quot;react&quot;;
+import useMeasure from &quot;react-use-measure&quot;;
+
+type PropsWithoutAutoplay = {
+  autoPlay?: false;
+};
+type PropsWithAutoplay = {
+  autoPlay: true;
+  interval: number;
+};
+
+export default function Carousel(
+  props: PropsWithoutAutoplay | PropsWithAutoplay
+) {
+  const SCALE_FACTOR = 1.1;
+  const [activeCardIdx, setActiveCardIdx] = useState(0);
+
+  const [containerRef, containerBounds] = useMeasure();
+  const [childRef, childBounds] = useMeasure();
+
+  // define values
+  const parentWidth = containerBounds.width;
+  const childWidth = childBounds.width;
+
+  const gap = 10;
+  const paddingX = gap;
+  const ITEMS_IN_VIEW = Math.floor(
+    (parentWidth - paddingX * 2 + gap * 2) / (childWidth + gap * 4)
+  );
+
+  useEffect(() =&gt; {
+    if (!props.autoPlay || !props.interval) return;
+    const selfIncTimerInterval = setInterval(() =&gt; {
+      setActiveCardIdx((prevCardIdx) =&gt; {
+        return prevCardIdx + 1 &gt;= ITEMS.length ? 0 : prevCardIdx + 1;
+      });
+    }, props.interval);
+    return () =&gt; {
+      clearInterval(selfIncTimerInterval);
+    };
+  }, []);
+
+  return (
+    &lt;div className=&quot;w-full grid items-center &quot; ref={containerRef}&gt;
+      &lt;div className=&quot;w-full grid items-center&quot;&gt;
+        &lt;div
+          id=&quot;carousel-wrapper&quot;
+          className=&quot;flex gap-10 px-10 overflow-x-hidden py-5&quot;
+        &gt;
+          {ITEMS.map((item, idx) =&gt; (
+            &lt;AnimatePresence key={`carousel-item-${idx}`}&gt;
+              &lt;motion.div
+                ref={childRef}
+                className=&quot;flex-1&quot;
+                initial={{
+                  scale: 1,
+                }}
+                transition={{
+                  duration: 0.25,
+                  ease: &quot;easeInOut&quot;,
+                }}
+                animate={{
+                  scale: idx === activeCardIdx ? 1 * SCALE_FACTOR : 1,
+                  x:
+                    activeCardIdx &gt;= ITEMS_IN_VIEW % activeCardIdx
+                      ? -((childWidth + paddingX * 2 + gap * 2) * activeCardIdx)
+                      : 0,
+                }}
+              &gt;
+                &lt;Card item={item} active={idx === activeCardIdx} /&gt;
+              &lt;/motion.div&gt;
+            &lt;/AnimatePresence&gt;
+          ))}
+        &lt;/div&gt;
+        &lt;div className=&quot;flex w-full justify-center gap-2 w-1/5 mt-5&quot;&gt;
+          &lt;button
+            onClick={() =&gt; {
+              setActiveCardIdx((prevCardIdx) =&gt; {
+                return prevCardIdx - 1 &lt; 0 ? ITEMS.length - 1 : prevCardIdx - 1;
+              });
+            }}
+            className=&quot;p-2 w-1/5 bg-black text-white hover:bg-neutral-600 transition&quot;
+          &gt;
+            {&quot;&lt;&quot;}
+          &lt;/button&gt;
+          &lt;button
+            onClick={() =&gt; {
+              setActiveCardIdx((prevCardIdx) =&gt; {
+                return prevCardIdx + 1 &gt;= ITEMS.length ? 0 : prevCardIdx + 1;
+              });
+            }}
+            className=&quot;p-2 w-1/5 bg-black text-white hover:bg-neutral-600 transition&quot;
+          &gt;
+            {&quot;&gt;&quot;}
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<p><code>File: App.ts</code></p>
+<pre><code class="language-ts">import React from &quot;react&quot;;
+import Carousel from &quot;./components/Carousel&quot;;
+
+export default function App() {
+  return (
+    &lt;div className=&quot;flex flex-col gap-10&quot;&gt;
+      &lt;div className=&quot;w-[500px] overflow-y-hidden&quot;&gt;
+        &lt;Carousel /&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;w-[500px] overflow-y-hidden&quot;&gt;
+        &lt;Carousel autoPlay={true} interval={1000} /&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;w-[500px] overflow-y-hidden&quot;&gt;
+        &lt;Carousel /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a rel="prev" href="./blogs/Functional_Programming.html" class="mobile-nav-chapters previous" title="Previous chapter">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+
+            </div>
+
+            
+                <a href="./blogs/Functional_Programming.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        
+
+        
+
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS script -->
+        
+
+    </body>
+</html>

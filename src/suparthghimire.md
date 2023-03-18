@@ -29,14 +29,23 @@ Kathmandu, Nepal
 
 # Work Experience
 
+- **Sr. Full Stack Developer**
+  <br>
+  _March 2023 - Current_
+  <br>
+  **Swivt Techologies**
+- NDA Issues.
+
 - **Project Lead - The Wadi Tribe Mobile Application**
   <br>
   _July 2022 - November 2022_
   <br>
   **Freelance**
+
   - Managing Team of 4 along with an International Client to create a Full Stack Application with Augmented Reality
   - Implemented fully featured REST API in Microservice Architecture with CRUD, Authentication and Authorization in Node JS using TypeScript and MySQL with Prisma ORM
   - Created Robust Admin Panel to fulfill neads of current and future projects in Next JS using TypeScript with TailwindCSS and MantineUI
+
 - **Design System in Next.js**
   <br>
   _March 2022 - July 2022_

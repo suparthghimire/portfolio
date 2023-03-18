@@ -1,149 +1,94 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en">
     <head>
-        <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Weirdness of This - Suparth Narayan Ghimire</title>
-
-
-        <!-- Custom HTML head -->
-        
+        <title>Weirdness of This - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="../favicon.svg">
-        <link rel="shortcut icon" href="../favicon.png">
-        <link rel="stylesheet" href="../css/variables.css">
-        <link rel="stylesheet" href="../css/general.css">
-        <link rel="stylesheet" href="../css/chrome.css">
-        <link rel="stylesheet" href="../css/print.css" media="print">
+        <base href="../">
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../fonts/fonts.css">
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
 
-        <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../highlight.css">
-        <link rel="stylesheet" href="../tomorrow-night.css">
-        <link rel="stylesheet" href="../ayu-highlight.css">
+        <link rel="shortcut icon" href="favicon.png">
 
-        <!-- Custom theme stylesheets -->
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme -->
+        
+
+        
+
+        <!-- Fetch Clipboard.js from CDN but have a local fallback -->
+        <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.1/clipboard.min.js"></script>
+        <script>
+            if (typeof Clipboard == 'undefined') {
+                document.write(unescape("%3Cscript src='clipboard.min.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <!-- Fetch store.js from local - TODO add CDN when 2.x.x is available on cdnjs -->
+        <script src="store.js"></script>
 
     </head>
-    <body>
-        <!-- Provide site root to javascript -->
-        <script>
-            var path_to_root = "../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
-
-        <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script>
-            try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
-
-                if (theme.startsWith('"') && theme.endsWith('"')) {
-                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
-                }
-
-                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
-                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
-                }
-            } catch (e) { }
-        </script>
-
+    <body class="light">
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script>
-            var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
-            if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
-            html.classList.remove('no-js')
-            html.classList.remove('light')
-            html.classList.add(theme);
-            html.classList.add('js');
+        <script type="text/javascript">
+            var theme = store.get('mdbook-theme');
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
-            if (document.body.clientWidth >= 1080) {
-                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
-                sidebar = sidebar || 'visible';
-            }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+        <script type="text/javascript">
+            var sidebar = store.get('mdbook-sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../suparthghimire.html"><strong aria-hidden="true">1.</strong> Suparth Narayan Ghimire</a></li><li class="chapter-item expanded affix "><li class="part-title">JavaScript Blogs</li><li class="chapter-item expanded "><a href="../blogs/Statements.html"><strong aria-hidden="true">2.</strong> Understanding Statements</a></li><li class="chapter-item expanded "><a href="../blogs/This.html" class="active"><strong aria-hidden="true">3.</strong> Weirdness of This</a></li><li class="chapter-item expanded "><a href="../blogs/Functional_Programming.html"><strong aria-hidden="true">4.</strong> Weird usage of Functions</a></li></ol>
-            </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
-        </nav>
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="./suparthghimire.html"><strong>1.</strong> Suparth Narayan Ghimire</a></li><li><a href="./blogs/Statements.html"><strong>2.</strong> Understanding Statements</a></li><li><a href="./blogs/This.html" class="active"><strong>3.</strong> Weirdness of This</a></li><li><a href="./blogs/Functional_Programming.html"><strong>4.</strong> Weird usage of Functions</a></li><li><a href="./blogs/React/Carousel.html"><strong>5.</strong> Dynamic Carousel</a></li></ul>
+        </div>
 
         <div id="page-wrapper" class="page-wrapper">
 
-            <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+            <div class="page" tabindex="-1">
+                
+                <div id="menu-bar" class="menu-bar">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
-                        </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                        </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
-                        </button>
+                        <i id="sidebar-toggle" class="fa fa-bars" title="Toggle sidebar"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush" title="Change theme"></i>
                     </div>
 
-                    <h1 class="menu-title">Suparth Narayan Ghimire</h1>
+                    <h1 class="menu-title"></h1>
 
                     <div class="right-buttons">
-                        <a href="../print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                        <a href="print.html">
+                            <i id="print-button" class="fa fa-print" title="Print this book"></i>
                         </a>
-
                     </div>
                 </div>
-
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                    </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
-                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                    });
-                </script>
 
                 <div id="content" class="content">
-                    <main>
-                        <h1 id="what-is-this-in-javascript"><a class="header" href="#what-is-this-in-javascript">What is This? (in JavaScript)</a></h1>
+                    <a class="header" href="./blogs/This.html#what-is-this-in-javascript" id="what-is-this-in-javascript"><h1>What is This? (in JavaScript)</h1></a>
 <p>We all developers have atleast once in our lifetime encountered the <code>this</code> keyword in many Programming Languages (<code>self</code> if you are from <code>Python</code> island). The implementation of <code>this</code> varies somewhat in all these languages, but it is not as confusing as it is in JavaScript.</p>
-<h1 id="detour-to-c"><a class="header" href="#detour-to-c">Detour to C++</a></h1>
+<a class="header" href="./blogs/This.html#detour-to-c" id="detour-to-c"><h1>Detour to C++</h1></a>
 <p>Before starting, lets see another famous programming language that utilizes the <code>this</code> keyword, <code>C++</code>.</p>
 <p><em>The example here is true for most other languages as well</em></p>
 <p>I think the implementation of <code>this</code> in <code>C++</code> is as straight forward as it gets. It represents the current instance of the Class.
@@ -170,9 +115,9 @@ int main(){
 <br>
 Thus, while logging the value of <code>name</code> from object <code>p</code>, we get Suparth in terminal.</p>
 <p>Doesn't Seem Complex does it? Well, buckle up, as we gear towards the island of <code>JavaScript</code> where everything is weird. Specially <code>This</code>!</p>
-<h1 id="welcome-to-javascript"><a class="header" href="#welcome-to-javascript">Welcome to JavaScript</a></h1>
+<a class="header" href="./blogs/This.html#welcome-to-javascript" id="welcome-to-javascript"><h1>Welcome to JavaScript</h1></a>
 <p><code>JavaScript</code>'s <code>this</code> has the same heart as other programming languages. It too refers to the current instance. But, the catch here is <strong>WHAT IN HELL DOES CURRENT INSTANCE MEAN?</strong></p>
-<h2 id="current-instance--scope"><a class="header" href="#current-instance--scope">Current Instance / Scope</a></h2>
+<a class="header" href="./blogs/This.html#current-instance--scope" id="current-instance--scope"><h2>Current Instance / Scope</h2></a>
 <p>JavaScript (by default) is a globally scoped language. It means you dont need to create any extra scope to execute code like in C++ or Java where you require a <code>main</code> method. Here you can execute code from first line itself. It is similar to Python in this regard. To achieve this, JavaScript has scopes/contexts where everything is executed.</p>
 <p>Scopes in JavaScript:</p>
 <ul>
@@ -186,13 +131,13 @@ Thus, while logging the value of <code>name</code> from object <code>p</code>, w
 <li><em>Hoisting</em></li>
 <li><em>Closures</em></li>
 </ul>
-<h1 id="this-in-javascript"><a class="header" href="#this-in-javascript">This in JavaScript</a></h1>
+<a class="header" href="./blogs/This.html#this-in-javascript" id="this-in-javascript"><h1>This in JavaScript</h1></a>
 <p><code>this</code> refers to different things in JavaScript.</p>
 <p>The basic gist of <code>this</code> in JavaScript is that <code>this</code> refers to the object of whatever scope is wrapping it. If the object of scope is not found, it refers to the parent's scope's object.</p>
 <p>Confused? Let me elaborate.</p>
 <p>We see that <code>window</code> is an object in JavaScript which is the object that represents the global scope. Block scope doesn't have any object that represents to it. Hence, if <code>this</code> is referred inside a simple block scope (within curly braces), it still refers to the window object as there is no other object for it to bind itself to.</p>
 <p>By {}, I mean simple lexical scoping or using if statements, loops etc.</p>
-<h2 id="this-refering-to-global-object"><a class="header" href="#this-refering-to-global-object">This Refering to Global Object</a></h2>
+<a class="header" href="./blogs/This.html#this-refering-to-global-object" id="this-refering-to-global-object"><h2>This Refering to Global Object</h2></a>
 <ul>
 <li>Global Scope</li>
 </ul>
@@ -227,7 +172,7 @@ console.log(obj.thisKey);
 JavaScript functions are weird as well as magical. We can not only treat them as normal subroutines by simply calling them, but also as constructors by invoking them using the new keyword! Here, <code>function fn</code> has just been called like a normal subroutine. Thus, no constructor is created which does not create a function scope, but creates a local scope. And since no object corresponds to local scope, it looks at the parent scope of the function which is global scope. Since the corresponding object of global scope is window, <code>this</code> inside a function invoked by a simple function call refers to the global scope or window object.</p>
 <p><strong>Object:</strong>
 The answer to Object's example simple. Creating new object does not create any new scope, as <code>obj</code> is simply a variable (even though it uses curly braces). Thus, it refers to the global scope/window object as <code>obj</code> is created inside global scope.</p>
-<h1 id="the-prototype-carnival"><a class="header" href="#the-prototype-carnival">The Prototype Carnival</a></h1>
+<a class="header" href="./blogs/This.html#the-prototype-carnival" id="the-prototype-carnival"><h1>The Prototype Carnival</h1></a>
 <p>Before moving forward, we must be familiar with prototypes and prototipal inheritance. I wont go much in detail, but here is a small brief.</p>
 <p>Everything in JavaScript is an Object. If we see the prototype chain of anything in JavaScript, we see it is same as <code>Object.Prototype</code>. The Prototype of Object is null. Hence, in the top level of hierarchy, we see object being present.</p>
 <p>This means function is an object too. If you run following code:</p>
@@ -235,7 +180,7 @@ The answer to Object's example simple. Creating new object does not create any n
 </code></pre>
 <p>We get true as the result.</p>
 <hr />
-<h2 id="this-refering-to-certain-object"><a class="header" href="#this-refering-to-certain-object">This Refering to Certain Object</a></h2>
+<a class="header" href="./blogs/This.html#this-refering-to-certain-object" id="this-refering-to-certain-object"><h2>This Refering to Certain Object</h2></a>
 <ul>
 <li>Functions as Constructors</li>
 </ul>
@@ -315,7 +260,7 @@ obj.getName();
 </code></pre>
 <p>What will <code>this</code> point to in this case?</p>
 <p>If you say window object, you are absolutely correct. As arrow functions cannot act as constructor function, it wont bind to the object <code>obj</code>, but to the global scope/window object.</p>
-<h1 id="classes---new-kids-on-the-block"><a class="header" href="#classes---new-kids-on-the-block">Classes - New Kids on the Block</a></h1>
+<a class="header" href="./blogs/This.html#classes---new-kids-on-the-block" id="classes---new-kids-on-the-block"><h1>Classes - New Kids on the Block</h1></a>
 <p>Es6 was an interesting transition from Es5 in JavaScript island. Many new cool kids were added in the island who brought much needded changes that made the language much more redable and accessible. We all know the introduction of <code>Promises</code> and <code>async/await</code>, where <code>async/await</code> were the hot cakes. But well, classes were added too! So? How does <code>this</code> work in Classes? Well, how it always has! Let me explain.</p>
 <p>You see classes in JavaScript is same thing as creating functions and invoking them as constructors using the <code>new</code> keyword. It just is a syntatic sugar similar to <code>async/await</code>.
 Thus, whatever we discussed before that includes <code>Function</code>, the concept here holds true.</p>
@@ -355,57 +300,63 @@ console.log(typeof DemoClass);
 <pre><code>&quot;function&quot;
 </code></pre>
 <p>Thus, nothing changes while using <code>this</code> keyword inside classes in JavaScript.</p>
-<h1 id="leaving-javascript"><a class="header" href="#leaving-javascript">Leaving JavaScript</a></h1>
+<a class="header" href="./blogs/This.html#leaving-javascript" id="leaving-javascript"><h1>Leaving JavaScript</h1></a>
 <p>That is all I have in store for today. <code>this</code> isn't over by the way! <code>this</code> has alot more to be explored upon. Did you know, you could modify behavior of <code>this</code> in JavaScript? Well, stay tuned for more blogs, as more of <code>this</code> is yet to be discussed.</p>
 <p>Adios</p>
 
-                    </main>
-
-                    <nav class="nav-wrapper" aria-label="Page navigation">
-                        <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../blogs/Statements.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-
-                            <a rel="next" href="../blogs/Functional_Programming.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-
-                        <div style="clear: both"></div>
-                    </nav>
                 </div>
-            </div>
 
-            <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../blogs/Statements.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                <!-- Mobile navigation buttons -->
+                
+                    <a rel="prev" href="./blogs/Statements.html" class="mobile-nav-chapters previous" title="Previous chapter">
                         <i class="fa fa-angle-left"></i>
                     </a>
+                
 
-                    <a rel="next" href="../blogs/Functional_Programming.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                
+                    <a rel="next" href="./blogs/Functional_Programming.html" class="mobile-nav-chapters next" title="Next chapter">
                         <i class="fa fa-angle-right"></i>
                     </a>
-            </nav>
+                
+
+            </div>
+
+            
+                <a href="./blogs/Statements.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="./blogs/Functional_Programming.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
 
         </div>
 
 
-
-
+        <!-- Local fallback for Font Awesome -->
         <script>
-            window.playground_copyable = true;
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
         </script>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        
 
-        <script src="../elasticlunr.min.js"></script>
-        <script src="../mark.min.js"></script>
-        <script src="../searcher.js"></script>
+        
 
-        <script src="../clipboard.min.js"></script>
-        <script src="../highlight.js"></script>
-        <script src="../book.js"></script>
+        
 
-        <!-- Custom JS scripts -->
+        
 
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS script -->
+        
 
     </body>
 </html>
