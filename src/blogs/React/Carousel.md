@@ -54,7 +54,7 @@ I have one job, To make a carousel with **NO HARD CODED VALUES**
 
 # Demo and Tech Stack
 
-[View Demo](#)
+[View Demo](http://carousel.suparthnarayanghimire.com.np/)
 
 I will be using the things that are popular at the time being to create the carousel and which probably will be used in many of your projects.
 
@@ -65,6 +65,8 @@ I will be using the things that are popular at the time being to create the caro
 - [Use Measure](#) _Simple hook to get width and height of our elements_
 
 # Setup
+
+Goto [Github Repo](https://github.com/suparthghimire/custom-carousel) and clone the repo.
 
 1. Get the code
 
