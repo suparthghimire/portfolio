@@ -914,22 +914,22 @@ cd carousel
 <a class="header" href="print.html#explanation" id="explanation"><h1>Explanation</h1></a>
 <p>We will be using the <code>useMeasure</code> hook to get the width of our carousel. We will also be using the <code>useTransform</code> hook from <code>react-use-measure</code> that provides bounds for the carousel and finally, we will use <code>framer-motion</code> for animation.</p>
 <p>Lets jump into Carousel Components to see the props it takes</p>
-<pre><code class="language-ts">type PropsWithoutAutoplay = {
-  autoPlay?: false;
-  hideControls?: boolean;
-  batchScroll?: boolean;
+<pre><code class="language-js">type PropsWithoutAutoplay = {
+  autoPlay?: false,
+  hideControls?: boolean,
+  batchScroll?: boolean,
 };
 type PropsWithAutoplay = {
-  autoPlay: true;
-  interval: number;
+  autoPlay: true,
+  interval: number,
 };
 type CommonProps = {
-  spacing?: number;
-  hideControls?: boolean;
-  batchScroll?: boolean;
-  scaleOnHover?: boolean;
-  children: React.ReactNode;
-  pagination?: boolean;
+  spacing?: number,
+  hideControls?: boolean,
+  batchScroll?: boolean,
+  scaleOnHover?: boolean,
+  children: React.ReactNode,
+  pagination?: boolean,
 };
 type Props = (PropsWithoutAutoplay | PropsWithAutoplay) &amp; CommonProps;
 </code></pre>
@@ -961,7 +961,7 @@ type Props = (PropsWithoutAutoplay | PropsWithAutoplay) &amp; CommonProps;
 </li>
 </ul>
 <p>Lets look at the state variables for the component</p>
-<pre><code class="language-ts">const [activeCardIdx, setActiveCardIdx] = useState(0);
+<pre><code class="language-js">const [activeCardIdx, setActiveCardIdx] = useState(0);
 const [scrollAmount, setScrollAmount] = useState(0);
 const [containerRef, containerBounds] = useMeasure();
 const [childRef, childBounds] = useMeasure();
@@ -981,7 +981,7 @@ const [childRef, childBounds] = useMeasure();
 </li>
 </ul>
 <p>We need to convert the items in children prop into array so that we can use <code>map</code> on it later on to render the carousel items.</p>
-<pre><code class="language-ts">const ITEMS = useMemo&lt;React.ReactNode[]&gt;(() =&gt; {
+<pre><code class="language-js">const ITEMS = useMemo&lt;React.ReactNode[]&gt;(() =&gt; {
   if (Array.isArray(props.children))
     return props.children.map((child) =&gt; child);
   else return [props.children];
@@ -989,7 +989,7 @@ const [childRef, childBounds] = useMeasure();
 </code></pre>
 <p>The <code>useMemo</code> hook is used here to memoize the array of carousel items. This is done so that we don't have to convert the children prop into array on every render. If we don't use <code>useMemo</code>, the carousel will be re-rendered on every scroll.</p>
 <p>The next step is to setup some default values for the carousel.</p>
-<pre><code class="language-ts">const parentWidth = containerBounds.width;
+<pre><code class="language-js">const parentWidth = containerBounds.width;
 const childWidth = childBounds.width;
 
 const spacing = useMemo(() =&gt; props.spacing || 10, []);
@@ -1014,7 +1014,7 @@ const ITEMS_IN_VIEW = useMemo(
 <p>Since we are using same value for Padding and Gap between the carousel items, we are multiplying the spacing by 4.</p>
 <p>The total items, of width <code>240px</code>, that can be viewed within the container, of width <code>1000px</code>, is <code>Math.floor(1000px/240px) = 4</code>. Hence container can only fit <code>4</code> items at a time.</p>
 <p>We have initialized all the state variables and calculated the default values except for the <code>scrollAmount</code>. This is because we need to calculate the <code>scrollAmount</code> only when the carousel is scrolled. So we will do that in the <code>useEffect</code> hook</p>
-<pre><code class="language-ts">useEffect(() =&gt; {
+<pre><code class="language-js">useEffect(() =&gt; {
   const current = Math.floor(activeCardIdx / ITEMS_IN_VIEW);
   const prev = Math.floor((activeCardIdx - 1) / ITEMS_IN_VIEW);
   const next = Math.floor((activeCardIdx + 1) / ITEMS_IN_VIEW);
@@ -1042,7 +1042,7 @@ const ITEMS_IN_VIEW = useMemo(
 <p>In our case, the callback function here will be called whenever the value of <code>activeCardIdx</code> changes. The <code>activeCardIdx</code> changes when the user clicks on the next or previous button or when the carousel auto plays.</p>
 <p>To change the activeCardIdx, we will use the <code>setActiveCardIdx</code> function. This function takes the index of the carousel item that we want to show as the argument.</p>
 <p>The final thing before creating our UI is to create a useEffect hook which runs the callback function on component mount; which means empty dependency array. This hook is to automatically play the carousel, this we need to set the interval for auto play.</p>
-<pre><code class="language-ts">useEffect(() =&gt; {
+<pre><code class="language-js">useEffect(() =&gt; {
   if (!props.autoPlay || !props.interval) return;
   const selfIncTimerInterval = setInterval(() =&gt; {
     setActiveCardIdx((prevCardIdx) =&gt; {
@@ -1057,7 +1057,7 @@ const ITEMS_IN_VIEW = useMemo(
 <p>The callback function here will be called on component mount. The callback function here is to set the interval for auto play. The interval is set to the value of the <code>interval</code> prop. The <code>interval</code> prop is the time in milliseconds after which the carousel will auto play.</p>
 <p>We need to return a function from the callback function. This function will be called when the component unmounts. This function is used to clear the interval. This is done so that the interval is cleared when the component unmounts. If we don't clear the interval, the callback function will be called even after the component unmounts. This will cause weird behavior in the app.</p>
 <p>Now that we have all the state variables and the useEffect hooks, we can create our UI.</p>
-<pre><code class="language-ts">return (
+<pre><code class="language-js">return (
   &lt;div className=&quot;w-full grid items-center &quot; ref={containerRef}&gt;
     &lt;div className=&quot;w-full grid items-center&quot;&gt;
       &lt;div
@@ -1169,7 +1169,7 @@ const ITEMS_IN_VIEW = useMemo(
 <p>Now we can use the Carousel Component inside any component that we want to use it in. We can pass the items that we want to render in the carousel as the <code>items</code> prop. We can also pass the <code>pagination</code> prop to render the pagination buttons. We can also pass the <code>hideControls</code> prop to hide the next and previous buttons. The carousel is responsive by design and will work on any screen size, or on any size of the parent's div. The only thing you need to worry is the width of the child element. The child element should be visible within the parent div.</p>
 <a class="header" href="print.html#conclusion-1" id="conclusion-1"><h2>Conclusion</h2></a>
 <p>We can now use the carousel component with variations like this</p>
-<pre><code class="language-ts">import React from &quot;react&quot;;
+<pre><code class="language-js">import React from &quot;react&quot;;
 import Card from &quot;./components/Card&quot;;
 import Carousel from &quot;./components/Carousel&quot;;
 import { ITEMS } from &quot;./utils/mockdata&quot;;

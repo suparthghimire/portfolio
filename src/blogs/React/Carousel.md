@@ -105,23 +105,23 @@ We will be using the `useMeasure` hook to get the width of our carousel. We will
 
 Lets jump into Carousel Components to see the props it takes
 
-```ts
+```js
 type PropsWithoutAutoplay = {
-  autoPlay?: false;
-  hideControls?: boolean;
-  batchScroll?: boolean;
+  autoPlay?: false,
+  hideControls?: boolean,
+  batchScroll?: boolean,
 };
 type PropsWithAutoplay = {
-  autoPlay: true;
-  interval: number;
+  autoPlay: true,
+  interval: number,
 };
 type CommonProps = {
-  spacing?: number;
-  hideControls?: boolean;
-  batchScroll?: boolean;
-  scaleOnHover?: boolean;
-  children: React.ReactNode;
-  pagination?: boolean;
+  spacing?: number,
+  hideControls?: boolean,
+  batchScroll?: boolean,
+  scaleOnHover?: boolean,
+  children: React.ReactNode,
+  pagination?: boolean,
 };
 type Props = (PropsWithoutAutoplay | PropsWithAutoplay) & CommonProps;
 ```
@@ -146,7 +146,7 @@ Most of these are self explanatory, but I will explain the ones that are not.
 
 Lets look at the state variables for the component
 
-```ts
+```js
 const [activeCardIdx, setActiveCardIdx] = useState(0);
 const [scrollAmount, setScrollAmount] = useState(0);
 const [containerRef, containerBounds] = useMeasure();
@@ -163,7 +163,7 @@ const [childRef, childBounds] = useMeasure();
 
 We need to convert the items in children prop into array so that we can use `map` on it later on to render the carousel items.
 
-```ts
+```js
 const ITEMS = useMemo<React.ReactNode[]>(() => {
   if (Array.isArray(props.children))
     return props.children.map((child) => child);
@@ -175,7 +175,7 @@ The `useMemo` hook is used here to memoize the array of carousel items. This is 
 
 The next step is to setup some default values for the carousel.
 
-```ts
+```js
 const parentWidth = containerBounds.width;
 const childWidth = childBounds.width;
 
@@ -216,7 +216,7 @@ The total items, of width `240px`, that can be viewed within the container, of w
 
 We have initialized all the state variables and calculated the default values except for the `scrollAmount`. This is because we need to calculate the `scrollAmount` only when the carousel is scrolled. So we will do that in the `useEffect` hook
 
-```ts
+```js
 useEffect(() => {
   const current = Math.floor(activeCardIdx / ITEMS_IN_VIEW);
   const prev = Math.floor((activeCardIdx - 1) / ITEMS_IN_VIEW);
@@ -250,7 +250,7 @@ To change the activeCardIdx, we will use the `setActiveCardIdx` function. This f
 
 The final thing before creating our UI is to create a useEffect hook which runs the callback function on component mount; which means empty dependency array. This hook is to automatically play the carousel, this we need to set the interval for auto play.
 
-```ts
+```js
 useEffect(() => {
   if (!props.autoPlay || !props.interval) return;
   const selfIncTimerInterval = setInterval(() => {
@@ -270,7 +270,7 @@ We need to return a function from the callback function. This function will be c
 
 Now that we have all the state variables and the useEffect hooks, we can create our UI.
 
-```ts
+```js
 return (
   <div className="w-full grid items-center " ref={containerRef}>
     <div className="w-full grid items-center">
@@ -408,7 +408,7 @@ Now we can use the Carousel Component inside any component that we want to use i
 
 We can now use the carousel component with variations like this
 
-```ts
+```js
 import React from "react";
 import Card from "./components/Card";
 import Carousel from "./components/Carousel";
