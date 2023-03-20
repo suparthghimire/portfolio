@@ -34,7 +34,8 @@ Kathmandu, Nepal
   _March 2023 - Current_
   <br>
   **Swivt Techologies**
-- NDA Issues.
+
+  - NDA Issues.
 
 - **Project Lead - The Wadi Tribe Mobile Application**
   <br>
