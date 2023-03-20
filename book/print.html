@@ -832,7 +832,8 @@ init();
 </code></pre>
 <hr />
 <a class="header" href="print.html#use-clever-math-to-make-responsive-carousel" id="use-clever-math-to-make-responsive-carousel"><h1>Use Clever Math to Make Responsive Carousel</h1></a>
-<p>I have used a lot of carousel components in the past, and they work good, but none of them work as expected. They are very hard to customize for smaller screens and often require static values when you want to make them responsive. I have decided to make my own carousel component that is responsive (on any screen size) and easy to customize.</p>
+<p><strong>BEFORE WE BEGIN, THIS IS NOT ANOTHER NPM PACKAGE</strong></p>
+<p>I have used a lot of carousel components in the past, and they work good, but none of them work as expected. They often require static values when you want to make them responsive. I have decided to make my own carousel component that is responsive (on any screen size) without providing any static screen size values.</p>
 <a class="header" href="print.html#problem" id="problem"><h1>Problem</h1></a>
 <p>The problem that we have on hand by looking at some popular carousel components.</p>
 <ol>
@@ -846,12 +847,12 @@ Good Features, but requires custom hard coded values for responsive design.</li>
 Good Features, but requires custom hard coded values for responsive design.</li>
 <li>Swiper
 Good Features, but requires custom hard coded values for responsive design.
-Also, it says ReactComponent version will be deprecated in favor of web-components, which are not supported well in React yet.</li>
+Also, it says ReactComponent version will be deprecated in favor of web-componenjsx, which are not supported well in React yet.</li>
 </ol>
 <p>See a pattern here? All of these need hard coded values to make them responsive.</p>
 <p>All of these component packages, though they provide great deal of customization and features, require hard coded values to make them responsive.</p>
-<p>This is something we often see in these components</p>
-<pre><code class="language-ts">const responsive = {
+<p>This is something we often see in these componenjsx</p>
+<pre><code class="language-jsx">const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 5,
@@ -872,177 +873,390 @@ Also, it says ReactComponent version will be deprecated in favor of web-componen
 <p>What if I don't want to specify these values and want them to be dynamic? The major drawback of this is that the size of carousel in different screens dictates the size of inner carousel child components. This really hard to maintain.</p>
 <a class="header" href="print.html#objective" id="objective"><h1>Objective</h1></a>
 <p>I have one job, To make a carousel with <strong>NO HARD CODED VALUES</strong></p>
-<a class="header" href="print.html#solution" id="solution"><h1>Solution</h1></a>
+<a class="header" href="print.html#demo-and-tech-stack" id="demo-and-tech-stack"><h1>Demo and Tech Stack</h1></a>
+<p><a href="#">View Demo</a></p>
 <p>I will be using the things that are popular at the time being to create the carousel and which probably will be used in many of your projects.</p>
 <ul>
-<li><a href="#">React</a></li>
-<li><a href="#">Typescript (optional)</a></li>
-<li><a href="#">Tailwindcss</a></li>
+<li><a href="#">React</a> <em>You can use any other libraries</em></li>
+<li><a href="#">Typescript</a> <em>(optional)</em></li>
+<li><a href="#">Tailwindcss</a> <em>(optional)</em></li>
 <li><a href="#">Framer Motion</a></li>
 <li><a href="#">Use Measure</a> <em>Simple hook to get width and height of our elements</em></li>
 </ul>
 <a class="header" href="print.html#setup" id="setup"><h1>Setup</h1></a>
-<p>Install the dependencies and start your server. (Figure out how to do this yourself)</p>
-<a class="header" href="print.html#create-the-carousel" id="create-the-carousel"><h1>Create the Carousel</h1></a>
-<p>We will be using the <code>useMeasure</code> hook to get the width of our carousel. We will also be using the <code>useTransform</code> hook from <code>framer-motion</code> to make the carousel slide.</p>
-<p>I wont go block by block because I know the pain to compile code from blog posts. I will just show the final code and explain the parts later if you want to know how this works.</p>
-<p>Here is the code</p>
-<p><code>File: Card.ts</code>
-<em>Write your own mockdata and import it</em></p>
-<pre><code class="language-ts">import { ITEMS } from &quot;../utils/mockdata&quot;;
-
-export default function Card(props: {
-  item: typeof ITEMS[number];
-  active: boolean;
-}) {
-  return (
-    &lt;div
-      className={`border w-[300px] shadow rounded ${
-        props.active ? &quot;bg-red-200&quot; : &quot;&quot;
-      }`}
-    &gt;
-      &lt;img
-        src={props.item.img}
-        className=&quot;w-[300px] aspect-video object-cover&quot;
-      /&gt;
-      &lt;div className=&quot;p-4&quot;&gt;
-        &lt;h2 className=&quot;text-2xl font-bold&quot;&gt;{props.item.title}&lt;/h2&gt;
-        &lt;p className=&quot;text-gray-500&quot;&gt;{props.item.description}&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div className=&quot;w-full p-2&quot;&gt;
-        &lt;button className=&quot;bg-black rounded text-white p-2 w-full hover:bg-neutral-700 transition&quot;&gt;
-          View Info
-        &lt;/button&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  );
-}
+<ol>
+<li>
+<p>Get the code</p>
+<pre><code class="language-bash">git clone
+cd carousel
 </code></pre>
-<p><code>File: Carousel.ts</code></p>
-<pre><code class="language-ts">import Card from &quot;./Card&quot;;
-import { ITEMS } from &quot;../utils/mockdata&quot;;
-import { motion, AnimatePresence } from &quot;framer-motion&quot;;
-import { useEffect, useState } from &quot;react&quot;;
-import useMeasure from &quot;react-use-measure&quot;;
-
-type PropsWithoutAutoplay = {
+</li>
+<li>
+<p>Install Dependencies</p>
+<pre><code class="language-bash">yarn
+</code></pre>
+<p>or</p>
+<pre><code class="language-bash">npm install
+</code></pre>
+</li>
+<li>
+<p>Start the dev server</p>
+<pre><code class="language-bash">yarn dev
+</code></pre>
+<p>or</p>
+<pre><code class="language-bash">npm run dev
+</code></pre>
+</li>
+<li>
+<p>Open <a href="#">http://localhost:5173</a> to view it in the browser.</p>
+</li>
+</ol>
+<a class="header" href="print.html#explanation" id="explanation"><h1>Explanation</h1></a>
+<p>We will be using the <code>useMeasure</code> hook to get the width of our carousel. We will also be using the <code>useTransform</code> hook from <code>react-use-measure</code> that provides bounds for the carousel and finally, we will use <code>framer-motion</code> for animation.</p>
+<p>Lets jump into Carousel Components to see the props it takes</p>
+<pre><code class="language-ts">type PropsWithoutAutoplay = {
   autoPlay?: false;
+  hideControls?: boolean;
+  batchScroll?: boolean;
 };
 type PropsWithAutoplay = {
   autoPlay: true;
   interval: number;
 };
-
-export default function Carousel(
-  props: PropsWithoutAutoplay | PropsWithAutoplay
-) {
-  const SCALE_FACTOR = 1.1;
-  const [activeCardIdx, setActiveCardIdx] = useState(0);
-
-  const [containerRef, containerBounds] = useMeasure();
-  const [childRef, childBounds] = useMeasure();
-
-  // define values
-  const parentWidth = containerBounds.width;
-  const childWidth = childBounds.width;
-
-  const gap = 10;
-  const paddingX = gap;
-  const ITEMS_IN_VIEW = Math.floor(
-    (parentWidth - paddingX * 2 + gap * 2) / (childWidth + gap * 4)
-  );
-
-  useEffect(() =&gt; {
-    if (!props.autoPlay || !props.interval) return;
-    const selfIncTimerInterval = setInterval(() =&gt; {
-      setActiveCardIdx((prevCardIdx) =&gt; {
-        return prevCardIdx + 1 &gt;= ITEMS.length ? 0 : prevCardIdx + 1;
-      });
-    }, props.interval);
-    return () =&gt; {
-      clearInterval(selfIncTimerInterval);
-    };
-  }, []);
-
-  return (
-    &lt;div className=&quot;w-full grid items-center &quot; ref={containerRef}&gt;
-      &lt;div className=&quot;w-full grid items-center&quot;&gt;
-        &lt;div
-          id=&quot;carousel-wrapper&quot;
-          className=&quot;flex gap-10 px-10 overflow-x-hidden py-5&quot;
-        &gt;
-          {ITEMS.map((item, idx) =&gt; (
-            &lt;AnimatePresence key={`carousel-item-${idx}`}&gt;
-              &lt;motion.div
-                ref={childRef}
-                className=&quot;flex-1&quot;
-                initial={{
-                  scale: 1,
-                }}
-                transition={{
-                  duration: 0.25,
-                  ease: &quot;easeInOut&quot;,
-                }}
-                animate={{
-                  scale: idx === activeCardIdx ? 1 * SCALE_FACTOR : 1,
-                  x:
-                    activeCardIdx &gt;= ITEMS_IN_VIEW % activeCardIdx
-                      ? -((childWidth + paddingX * 2 + gap * 2) * activeCardIdx)
-                      : 0,
-                }}
-              &gt;
-                &lt;Card item={item} active={idx === activeCardIdx} /&gt;
-              &lt;/motion.div&gt;
-            &lt;/AnimatePresence&gt;
-          ))}
-        &lt;/div&gt;
-        &lt;div className=&quot;flex w-full justify-center gap-2 w-1/5 mt-5&quot;&gt;
-          &lt;button
-            onClick={() =&gt; {
-              setActiveCardIdx((prevCardIdx) =&gt; {
-                return prevCardIdx - 1 &lt; 0 ? ITEMS.length - 1 : prevCardIdx - 1;
-              });
-            }}
-            className=&quot;p-2 w-1/5 bg-black text-white hover:bg-neutral-600 transition&quot;
-          &gt;
-            {&quot;&lt;&quot;}
-          &lt;/button&gt;
-          &lt;button
-            onClick={() =&gt; {
-              setActiveCardIdx((prevCardIdx) =&gt; {
-                return prevCardIdx + 1 &gt;= ITEMS.length ? 0 : prevCardIdx + 1;
-              });
-            }}
-            className=&quot;p-2 w-1/5 bg-black text-white hover:bg-neutral-600 transition&quot;
-          &gt;
-            {&quot;&gt;&quot;}
-          &lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  );
-}
+type CommonProps = {
+  spacing?: number;
+  hideControls?: boolean;
+  batchScroll?: boolean;
+  scaleOnHover?: boolean;
+  children: React.ReactNode;
+  pagination?: boolean;
+};
+type Props = (PropsWithoutAutoplay | PropsWithAutoplay) &amp; CommonProps;
 </code></pre>
-<p><code>File: App.ts</code></p>
+<p>Most of these are self explanatory, but I will explain the ones that are not.</p>
+<ul>
+<li>
+<p><code>autoPlay</code> - If you want the carousel to auto play, set this to true. If you don't want it to auto play, set it to false or don't pass it at all.</p>
+</li>
+<li>
+<p><code>interval</code> - If you want to set the interval for auto play, pass this prop. The default value is 3000ms.</p>
+</li>
+<li>
+<p><code>spacing</code> - If you want to set the spacing between the carousel items, pass this prop. The default value is 0.</p>
+</li>
+<li>
+<p><code>hideControls</code> - If you want to hide the controls, pass this prop. The default value is false.</p>
+</li>
+<li>
+<p><code>batchScroll</code> - If you want to scroll multiple items at once, pass this prop. The default value is false.</p>
+</li>
+<li>
+<p><code>scaleOnHover</code> - If you want to scale the carousel items on hover, pass this prop. The default value is false.</p>
+</li>
+<li>
+<p><code>pagination</code> - If you want to show the pagination, pass this prop. The default value is false.</p>
+</li>
+<li>
+<p><code>children</code> - The children of the carousel. This is where you will pass the carousel items.</p>
+</li>
+</ul>
+<p>Lets look at the state variables for the component</p>
+<pre><code class="language-ts">const [activeCardIdx, setActiveCardIdx] = useState(0);
+const [scrollAmount, setScrollAmount] = useState(0);
+const [containerRef, containerBounds] = useMeasure();
+const [childRef, childBounds] = useMeasure();
+</code></pre>
+<ul>
+<li>
+<p><code>activeCardIdx</code> - This is the index of the active carousel item. This is used to show the active carousel item.</p>
+</li>
+<li>
+<p><code>scrollAmount</code> - This is the amount of scroll that we want to do. This is used to scroll the carousel.</p>
+</li>
+<li>
+<p><code>containerRef and containerBounds</code> - This is the ref of the container of the carousel. This is used to get the width of the container.</p>
+</li>
+<li>
+<p><code>childRef and childBounds</code> - This is the ref of the carousel item. This is used to get the width of the carousel item.</p>
+</li>
+</ul>
+<p>We need to convert the items in children prop into array so that we can use <code>map</code> on it later on to render the carousel items.</p>
+<pre><code class="language-ts">const ITEMS = useMemo&lt;React.ReactNode[]&gt;(() =&gt; {
+  if (Array.isArray(props.children))
+    return props.children.map((child) =&gt; child);
+  else return [props.children];
+}, [props.children]);
+</code></pre>
+<p>The <code>useMemo</code> hook is used here to memoize the array of carousel items. This is done so that we don't have to convert the children prop into array on every render. If we don't use <code>useMemo</code>, the carousel will be re-rendered on every scroll.</p>
+<p>The next step is to setup some default values for the carousel.</p>
+<pre><code class="language-ts">const parentWidth = containerBounds.width;
+const childWidth = childBounds.width;
+
+const spacing = useMemo(() =&gt; props.spacing || 10, []);
+
+const SCALE_FACTOR = useMemo(() =&gt; 1.1, []);
+const ITEMS_IN_VIEW = useMemo(
+  () =&gt; Math.floor((parentWidth - spacing * 4) / (childWidth + spacing * 4)),
+  [parentWidth, childWidth]
+);
+</code></pre>
+<p>Everything here is self explanatory. The only thing that is not is the <code>ITEMS_IN_VIEW</code> variable. This is the number of carousel items that can be shown in the carousel at a time. This is calculated by dividing the width of the carousel by the width of the carousel item.</p>
+<p>The use of <code>useMemo</code> here is to memoize the value of <code>ITEMS_IN_VIEW</code>. This is done so that we don't have to calculate the value of <code>ITEMS_IN_VIEW</code> on every render, rather only when the value of <code>parentWidth</code> or <code>childWidth</code> changes.</p>
+<p>Say the width of the parent container is <code>1000px</code> and each carousel item 's width is <code>200px</code>. Now say the spacing is <code>10px</code>. So the width of the carousel item will be</p>
+<pre><code class="language-math">Padding Space = 2 * 10px = 20px
+</code></pre>
+<pre><code class="language-math">Gap Space = 2 * 10px = 20px
+</code></pre>
+<pre><code class="language-math">Total Space = 40px
+</code></pre>
+<pre><code class="language-math">Width of Carousel Item = 200px + 40px = 240px
+</code></pre>
+<p>Since we are using same value for Padding and Gap between the carousel items, we are multiplying the spacing by 4.</p>
+<p>The total items, of width <code>240px</code>, that can be viewed within the container, of width <code>1000px</code>, is <code>Math.floor(1000px/240px) = 4</code>. Hence container can only fit <code>4</code> items at a time.</p>
+<p>We have initialized all the state variables and calculated the default values except for the <code>scrollAmount</code>. This is because we need to calculate the <code>scrollAmount</code> only when the carousel is scrolled. So we will do that in the <code>useEffect</code> hook</p>
+<pre><code class="language-ts">useEffect(() =&gt; {
+  const current = Math.floor(activeCardIdx / ITEMS_IN_VIEW);
+  const prev = Math.floor((activeCardIdx - 1) / ITEMS_IN_VIEW);
+  const next = Math.floor((activeCardIdx + 1) / ITEMS_IN_VIEW);
+  let amt = 0;
+  if (props.batchScroll) {
+    if (current === prev)
+      amt = -(childWidth + spacing * 4) * prev * ITEMS_IN_VIEW;
+    else if (current === next)
+      amt = -(childWidth + spacing * 4) * current * ITEMS_IN_VIEW;
+    else
+      amt =
+        activeCardIdx &gt;= ITEMS_IN_VIEW % activeCardIdx
+          ? -(childWidth + spacing * 4) * activeCardIdx
+          : 0;
+  } else {
+    amt =
+      activeCardIdx &gt;= ITEMS_IN_VIEW % activeCardIdx
+        ? -(childWidth + spacing * 4) * activeCardIdx
+        : 0;
+  }
+  setScrollAmount(amt);
+}, [activeCardIdx]);
+</code></pre>
+<p>The <code>useEffect</code> hook is used here to calculate the <code>scrollAmount</code> whenever the <code>activeCardIdx</code> changes. The <code>useEffect</code> hook takes a callback function as the first argument and an array of dependencies as the second argument. The callback function is called whenever the value of any of the dependencies changes.</p>
+<p>In our case, the callback function here will be called whenever the value of <code>activeCardIdx</code> changes. The <code>activeCardIdx</code> changes when the user clicks on the next or previous button or when the carousel auto plays.</p>
+<p>To change the activeCardIdx, we will use the <code>setActiveCardIdx</code> function. This function takes the index of the carousel item that we want to show as the argument.</p>
+<p>The final thing before creating our UI is to create a useEffect hook which runs the callback function on component mount; which means empty dependency array. This hook is to automatically play the carousel, this we need to set the interval for auto play.</p>
+<pre><code class="language-ts">useEffect(() =&gt; {
+  if (!props.autoPlay || !props.interval) return;
+  const selfIncTimerInterval = setInterval(() =&gt; {
+    setActiveCardIdx((prevCardIdx) =&gt; {
+      return prevCardIdx + 1 &gt;= ITEMS.length ? 0 : prevCardIdx + 1;
+    });
+  }, props.interval);
+  return () =&gt; {
+    clearInterval(selfIncTimerInterval);
+  };
+}, []);
+</code></pre>
+<p>The callback function here will be called on component mount. The callback function here is to set the interval for auto play. The interval is set to the value of the <code>interval</code> prop. The <code>interval</code> prop is the time in milliseconds after which the carousel will auto play.</p>
+<p>We need to return a function from the callback function. This function will be called when the component unmounts. This function is used to clear the interval. This is done so that the interval is cleared when the component unmounts. If we don't clear the interval, the callback function will be called even after the component unmounts. This will cause weird behavior in the app.</p>
+<p>Now that we have all the state variables and the useEffect hooks, we can create our UI.</p>
+<pre><code class="language-ts">return (
+  &lt;div className=&quot;w-full grid items-center &quot; ref={containerRef}&gt;
+    &lt;div className=&quot;w-full grid items-center&quot;&gt;
+      &lt;div
+        id=&quot;carousel-wrapper&quot;
+        className={`flex overflow-x-hidden py-5`}
+        style={{
+          gap: `${spacing * 4}px`,
+          paddingLeft: `${spacing * 4}px`,
+          paddingRight: `${spacing * 4}px`,
+        }}
+      &gt;
+        {ITEMS.map((item, idx) =&gt; (
+          &lt;AnimatePresence key={`carousel-item-${idx}`}&gt;
+            &lt;motion.div
+              ref={childRef}
+              className=&quot;flex-1&quot;
+              initial={{
+                scale: 1,
+              }}
+              whileHover={{
+                scale:
+                  activeCardIdx === idx
+                    ? SCALE_FACTOR
+                    : props.scaleOnHover
+                    ? SCALE_FACTOR
+                    : 1,
+              }}
+              animate={{
+                scale: idx === activeCardIdx ? 1 * SCALE_FACTOR : 1,
+                x: scrollAmount,
+              }}
+            &gt;
+              {item}
+            &lt;/motion.div&gt;
+          &lt;/AnimatePresence&gt;
+        ))}
+      &lt;/div&gt;
+
+      &lt;div className=&quot;w-full grid place-items-center&quot;&gt;
+        {props.pagination &amp;&amp; (
+          &lt;div className=&quot;mt-5 h-full flex gap-2&quot;&gt;
+            {ITEMS.map((_, idx) =&gt; (
+              &lt;button
+                onClick={() =&gt; {
+                  setActiveCardIdx(idx);
+                }}
+                key={`pagination-carousel-${idx}`}
+                className={`w-[10px] h-[10px] ${
+                  idx === activeCardIdx ? &quot;bg-neutral-900&quot; : &quot;bg-neutral-300&quot;
+                } rounded-full`}
+              /&gt;
+            ))}
+          &lt;/div&gt;
+        )}
+      &lt;/div&gt;
+      &lt;&gt;
+        {!props.hideControls &amp;&amp; (
+          &lt;div className=&quot;flex w-full justify-center spacing-2 w-1/5 mt-5&quot;&gt;
+            &lt;button
+              onClick={() =&gt; {
+                setActiveCardIdx((prevCardIdx) =&gt; {
+                  return prevCardIdx - 1 &lt; 0
+                    ? ITEMS.length - 1
+                    : prevCardIdx - 1;
+                });
+              }}
+              className=&quot;p-2 w-1/5 bg-black text-white hover:bg-neutral-600 transition&quot;
+            &gt;
+              {&quot;&lt;&quot;}
+            &lt;/button&gt;
+            &lt;button
+              onClick={() =&gt; {
+                setActiveCardIdx((prevCardIdx) =&gt; {
+                  return prevCardIdx + 1 &gt;= ITEMS.length ? 0 : prevCardIdx + 1;
+                });
+              }}
+              className=&quot;p-2 w-1/5 bg-black text-white hover:bg-neutral-600 transition&quot;
+            &gt;
+              {&quot;&gt;&quot;}
+            &lt;/button&gt;
+          &lt;/div&gt;
+        )}
+      &lt;/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);
+</code></pre>
+<p>Lets look at the code below the actual carousel and finish it before moving on to the carousel component.</p>
+<p>We see that if the <code>pagination</code> prop is true, we render a div with the pagination buttons. The pagination buttons are rendered using the <code>ITEMS</code> array. The <code>ITEMS</code> array is the array of items that we pass to the carousel component. The <code>ITEMS</code> array is mapped to render a button for each item. The <code>onClick</code> handler of the button is set to a function which sets the <code>activeCardIdx</code> to the index of the item that the button is for.</p>
+<p>We can also see that if the <code>hideControls</code> prop is false, we render a div with the next and previous buttons. The <code>onClick</code> handler of the buttons is set to a function which sets the <code>activeCardIdx</code> to the index of the previous or next item.</p>
+<p>Now for the actual carousel component</p>
+<p>We see that the carousel component has the outermost <code>div</code> with the width of full parent's width and the <code>ref</code> is th <code>containerRef</code>. This one defines the width of the carousel. The <code>ref</code> is set to the <code>containerRef</code> so that we can get the width of the carousel.</p>
+<p>The next <code>div</code> is the one which contains extra items for carousel such as pagination and controls.</p>
+<p>The next <code>div</code> contains the carousel items, and its width is set to the width of the carousel. The <code>gap</code>, <code>paddingLeft</code> and <code>paddingRight</code> are set to the value of the <code>spacing * 4</code>. This is done so that the carousel items are not cut off when the carousel is scrolled.</p>
+<a class="header" href="print.html#why-4" id="why-4"><h2>Why 4?</h2></a>
+<p>We are adding spacing on 4 sides of each component. <code>PaddingLeft</code>, <code>paddingRight</code> and <code>gap</code>. So we need to multiply the spacing by 4.</p>
+<a class="header" href="print.html#rendering-the-carousel-items" id="rendering-the-carousel-items"><h2>Rendering the Carousel Items</h2></a>
+<p>Each element in <code>ITEMS</code> array is rendered by wrapping them inside two components provided by framer-motion. The first component is the <code>AnimatePresence</code> component. This component is used to animate the elements when they are added or removed from the DOM. The second component is the <code>motion.div</code> component. This component is used to animate the elements when they are added or removed from the DOM.</p>
+<p><code>AnimatePresence</code> can animate the elements not only when the children components are mounted, but when they are unmounted. This means exit animations can be played when the children components are unmounted.</p>
+<p>The <code>motion.div</code> component is an addition to the <code>html</code> <code>div</code> element. This component can be used to animate the <code>div</code> element. The <code>motion.div</code> component has the <code>initial</code>, <code>whileHover</code>, <code>animate</code> props. The <code>initial</code> prop is used to set the initial state of the element. The <code>whileHover</code> prop is used to set the state of the element when the element is hovered. The <code>animate</code> prop is used to set the state of the element when the element is mounted.</p>
+<p>We need to set the key of the <code>AnimatePresence</code> component to <code>carousel-item-${idx}</code>. This is done so that the AnimatePresence component can animate the elements when they are added or removed from the DOM.</p>
+<p>The <code>motion.div</code> component has the <code>ref</code> prop set to the <code>childRef</code>. This is done so that we can get the width of the carousel items.</p>
+<p>The <code>motion.div</code> component has the <code>initial</code> prop set to an object with the <code>scale</code> property set to 1. This is done so that the carousel items are not scaled when they are mounted.</p>
+<p>When user hovers, if the <code>scaleOnHover</code> is true, the items should be scaled by factor of <code>SCALE_FACTOR</code>. But, the active item already has a scale of <code>SCALE_FACTOR</code>. So, if the <code>scaleOnHover</code> is true, and if the hovering item is not the active item, the item should be scaled by factor of <code>SCALE_FACTOR</code>. If the <code>scaleOnHover</code> is false, the item should not be scaled.</p>
+<p>Each div should be animated by the <code>x</code> and the <code>scale</code> property. The <code>x</code> property defines the translation of the element along the x-axis. The <code>x</code> property is set to the <code>scrollAmount</code> whose value is calculated using the <code>activeCardIdx</code> and the width of the carousel items above inside the <code>useEffect</code> hook.</p>
+<p>The <code>scale</code> property is set to the <code>idx === activeCardIdx ? 1 * SCALE_FACTOR : 1</code>. This is done so that the active item is scaled by factor of <code>SCALE_FACTOR</code>.</p>
+<p>We finally set the child of <code>motion.div</code> to be the actual item that we want to render.</p>
+<p>Thats It! We got it</p>
+<p>Now we can use the Carousel Component inside any component that we want to use it in. We can pass the items that we want to render in the carousel as the <code>items</code> prop. We can also pass the <code>pagination</code> prop to render the pagination buttons. We can also pass the <code>hideControls</code> prop to hide the next and previous buttons. The carousel is responsive by design and will work on any screen size, or on any size of the parent's div. The only thing you need to worry is the width of the child element. The child element should be visible within the parent div.</p>
+<a class="header" href="print.html#conclusion-1" id="conclusion-1"><h2>Conclusion</h2></a>
+<p>We can now use the carousel component with variations like this</p>
 <pre><code class="language-ts">import React from &quot;react&quot;;
+import Card from &quot;./components/Card&quot;;
 import Carousel from &quot;./components/Carousel&quot;;
+import { ITEMS } from &quot;./utils/mockdata&quot;;
 
 export default function App() {
   return (
-    &lt;div className=&quot;flex flex-col gap-10&quot;&gt;
-      &lt;div className=&quot;w-[500px] overflow-y-hidden&quot;&gt;
-        &lt;Carousel /&gt;
-      &lt;/div&gt;
-      &lt;div className=&quot;w-[500px] overflow-y-hidden&quot;&gt;
-        &lt;Carousel autoPlay={true} interval={1000} /&gt;
-      &lt;/div&gt;
-      &lt;div className=&quot;w-[500px] overflow-y-hidden&quot;&gt;
-        &lt;Carousel /&gt;
-      &lt;/div&gt;
+    &lt;div className=&quot;flex flex-col gap-10 p-10 overflow-y-hidden&quot;&gt;
+      &lt;Wrapper&gt;
+        &lt;h1 className=&quot;font-bold text-lg px-7&quot;&gt;Individual Scroll&lt;/h1&gt;
+        &lt;div className=&quot;w-full overflow-y-hidden&quot;&gt;
+          &lt;Carousel&gt;
+            {ITEMS.map((item, idx) =&gt; (
+              &lt;Card item={item} key={`carousel-default-${idx}`} /&gt;
+            ))}
+          &lt;/Carousel&gt;
+        &lt;/div&gt;
+      &lt;/Wrapper&gt;
+      &lt;Wrapper&gt;
+        &lt;h1 className=&quot;font-bold text-lg px-7&quot;&gt;Pagination&lt;/h1&gt;
+        &lt;div className=&quot;w-full overflow-y-hidden&quot;&gt;
+          &lt;Carousel pagination&gt;
+            {ITEMS.map((item, idx) =&gt; (
+              &lt;Card item={item} key={`carousel-default-${idx}`} /&gt;
+            ))}
+          &lt;/Carousel&gt;
+        &lt;/div&gt;
+      &lt;/Wrapper&gt;
+      &lt;Wrapper&gt;
+        &lt;h1 className=&quot;font-bold text-lg px-7&quot;&gt;Scale on Hover&lt;/h1&gt;
+        &lt;div className=&quot;w-full overflow-y-hidden&quot;&gt;
+          &lt;Carousel scaleOnHover&gt;
+            {ITEMS.map((item, idx) =&gt; (
+              &lt;Card item={item} key={`carousel-default-${idx}`} /&gt;
+            ))}
+          &lt;/Carousel&gt;
+        &lt;/div&gt;
+      &lt;/Wrapper&gt;
+      &lt;Wrapper&gt;
+        &lt;h1 className=&quot;font-bold text-lg px-7&quot;&gt;Custom Spacing&lt;/h1&gt;
+        &lt;div className=&quot;w-full overflow-y-hidden&quot;&gt;
+          &lt;Carousel spacing={20}&gt;
+            {ITEMS.map((item, idx) =&gt; (
+              &lt;Card item={item} key={`carousel-default-${idx}`} /&gt;
+            ))}
+          &lt;/Carousel&gt;
+        &lt;/div&gt;
+      &lt;/Wrapper&gt;
+      &lt;Wrapper&gt;
+        &lt;h1 className=&quot;font-bold text-lg px-7&quot;&gt;Batch Scroll&lt;/h1&gt;
+        &lt;div className=&quot;w-full overflow-y-hidden&quot;&gt;
+          &lt;Carousel batchScroll&gt;
+            {ITEMS.map((item, idx) =&gt; (
+              &lt;Card item={item} key={`carousel-default-${idx}`} /&gt;
+            ))}
+          &lt;/Carousel&gt;
+        &lt;/div&gt;
+      &lt;/Wrapper&gt;
+      &lt;Wrapper&gt;
+        &lt;h1 className=&quot;font-bold text-lg px-7&quot;&gt;Automatic Scroll&lt;/h1&gt;
+        &lt;div className=&quot;w-full overflow-y-hidden&quot;&gt;
+          &lt;Carousel pagination autoPlay interval={1000} hideControls&gt;
+            {ITEMS.map((item, idx) =&gt; (
+              &lt;Card item={item} key={`carousel-default-${idx}`} /&gt;
+            ))}
+          &lt;/Carousel&gt;
+        &lt;/div&gt;
+      &lt;/Wrapper&gt;
+      &lt;Wrapper&gt;
+        &lt;h1 className=&quot;font-bold text-lg px-7&quot;&gt;Automatic Batch Scroll&lt;/h1&gt;
+        &lt;div className=&quot;w-full overflow-y-hidden&quot;&gt;
+          &lt;Carousel batchScroll autoPlay interval={500} hideControls&gt;
+            {ITEMS.map((item, idx) =&gt; (
+              &lt;Card item={item} key={`carousel-default-${idx}`} /&gt;
+            ))}
+          &lt;/Carousel&gt;
+        &lt;/div&gt;
+      &lt;/Wrapper&gt;
     &lt;/div&gt;
   );
 }
+
+function Wrapper({ children }: { children: React.ReactNode }) {
+  return &lt;div className=&quot;w-full bg-neutral-200 py-5 rounded&quot;&gt;{children}&lt;/div&gt;;
+}
 </code></pre>
+<p>That all for this tutorial. I hope you enjoyed it. If you find any issues, add them in the github repository. This is not a react component that you can npm install though. You can copy the code and use it in your project. If you want to use it as a react component, you can fork the repository and make it into a react component. I will be happy to merge your pull request.</p>
+<p>Alright! Bye now.</p>
 
                 </div>
 
